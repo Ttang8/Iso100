@@ -42,7 +42,7 @@
 - `POST /api/comments`
 - `GET /api/comments/:id`
 - `DELETE /api/comments/:id`
-- `GET /api/comments/:id/photos`
+- `GET /api/photos/:id/comments`
 
 ### Tags
 
