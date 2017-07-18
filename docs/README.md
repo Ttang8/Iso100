@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]:
+[heroku]: https://iso100.herokuapp.com
 
 [Trello Link][trello]
 

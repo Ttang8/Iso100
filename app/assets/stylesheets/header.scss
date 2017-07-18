@@ -1,0 +1,32 @@
+.navbar {
+  display: fixed;
+}
+
+header {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-family: 'Pacifico', cursive;
+  border-bottom: 1px solid black;
+}
+
+.welcome-user {
+  display: flex;
+  align-items: center;
+}
+
+.login-button, .signup-button {
+  background-color: lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.login-button:hover, .signup-button:hover {
+  box-shadow: 5px 5px 5px black;
+}
+
+h1 {
+  font-size: 35px;
+}
