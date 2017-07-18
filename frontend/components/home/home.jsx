@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component{
   constructor(props){
@@ -13,9 +14,11 @@ class Home extends React.Component{
       );
     } else {
       return(
-        <div>
-          hello
-        </div>
+        <nav>
+          <Link to="/login">Log In</Link>
+          &nbsp;or&nbsp;
+          <Link to="/signup">Sign Up</Link>
+        </nav>
       );
     }
   }
