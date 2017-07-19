@@ -31,21 +31,21 @@ export const clearErrors = () => ({
 });
 
 export const createPhoto = photo => dispatch => (
-  ApiUtil.createPhoto(photo).then(photo => dispatch(receivePhoto(photo)))
+  APIUtil.createPhoto(photo).then(photo => dispatch(receivePhoto(photo)))
 );
 
 export const requestPhoto = photo => dispatch => (
-  ApiUtil.requestPhoto(photo).then(photo => dispatch(receivePhoto(photo)))
+  APIUtil.requestPhoto(photo).then(photo => dispatch(receivePhoto(photo)))
 );
 
 export const requestPhotos = () => (dispatch) => (
-  ApiUtil.requestPhotos().then(photos => dispatch(receivePhotos(photos)))
+  APIUtil.requestPhotos().then(photos => dispatch(receivePhotos(photos)))
 );
 
 export const deletePhoto = photo => dispatch => (
-  ApiUtil.destroyPhoto(photo).then(photo => dispatch(removePhoto(photo)))
+  APIUtil.destroyPhoto(photo).then(photo => dispatch(removePhoto(photo)))
 );
 
 export const updatePhoto = photo => dispatch => (
-  ApiUtil.updatePhoto(photo).then(photo => dispatch(receivePhoto(photo)))
+  APIUtil.updatePhoto(photo).then(photo => dispatch(receivePhoto(photo)))
 );

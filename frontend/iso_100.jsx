@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import {login} from './actions/session_actions';
+import {requestPhotos, createPhoto} from './actions/photo_actions';
 
 window.login = login;
+window.requestPhotos = requestPhotos;
+window.createPhoto = createPhoto;
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;

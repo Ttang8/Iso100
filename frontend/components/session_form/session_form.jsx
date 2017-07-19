@@ -73,7 +73,6 @@ class SessionForm extends Component{
   }
 
   render() {
-    console.log(this.props.formType);
     if (!this.state.modalIsOpen) {
       this.openModal();
     }

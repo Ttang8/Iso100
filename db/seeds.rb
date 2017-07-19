@@ -9,3 +9,7 @@
 User.destroy_all
 
 user1 = User.create(username: 'GuestAccount', password: 'password')
+
+Photo.destroy_all
+
+photo1 = Photo.create(title: 'Ocean', description: 'blue', image_url: 'alsdjfkasf', user_id: user1.id)
