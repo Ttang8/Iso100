@@ -3,7 +3,6 @@ import HomeContainer from './home/home_container';
 import SessionFormContainer from './session_form/session_form_container';
 import { Link, Route } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util';
-import NavBarContainer from './nav_bar/nav_bar_container';
 
 const App = () => (
   <div>
