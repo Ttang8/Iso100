@@ -30,6 +30,7 @@ class SessionForm extends Component{
 
   closeModal() {
     this.setState({modalIsOpen: false});
+    this.props.clearErrors();
     this.props.history.push('/');
   }
 
@@ -71,6 +72,11 @@ class SessionForm extends Component{
   }
 
   render() {
+    console.log(this.state.modalIsOpen);
+    if (!this.state.modalIsOpen) {
+      this.openModal();
+    }
+
     return(
       <div className="session-form">
         <Modal

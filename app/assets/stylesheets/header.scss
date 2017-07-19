@@ -3,13 +3,21 @@
 }
 
 header {
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 20px;
   border-bottom: 1px solid black;
   font-family: 'Pacifico', cursive;
+}
+
+.logo-pic {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  width: 80px;
 }
 
 .welcome-user {
