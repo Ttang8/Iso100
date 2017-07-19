@@ -82,18 +82,19 @@ class SessionForm extends Component{
         >
 
         {this.renderErrors()}
-        <form onSubmit={this.handleSubmit}>
-          <label>Username:
-            <input type="text" autoFocus="autofocus" value={this.state.username} onChange={this.update('username')}></input>
-          </label>
-          <label>Password:
-            <input type="password" value={this.state.password} onChange={this.update('password')}></input>
-          </label>
-          <input type="submit" value="Submit"></input>
+        <form className="submitform" onSubmit={this.handleSubmit}>
+          <div className="inputs">
+            <input placeholder="username" type="text" autoFocus="autofocus" value={this.state.username} onChange={this.update('username')}></input>
+          </div>
+          <div className="inputs">
+            <input placeholder="password" type="password" value={this.state.password} onChange={this.update('password')}></input>
+          </div>
+          <input className="login-button modal-button" type="submit" value="Submit"></input>
+          <button className="login-button modal-button" type="button" onClick={this.handleDemo}>Demo</button>
         </form>
-        <button type="button" onClick={this.handleDemo}>Demo</button>
-
-        <button onClick={this.closeModal}>Close</button>
+        <div className="close-button">
+          <button onClick={this.closeModal}>Close</button>
+        </div>
         </Modal>
       </div>
     );
