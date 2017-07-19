@@ -86,8 +86,9 @@ class SessionForm extends Component{
           contentLabel="SessionFormModal"
           className="session-modal"
         >
-
-        {this.renderErrors()}
+        <div className="errors">
+          {this.renderErrors()}
+        </div>
         <form className="submitform" onSubmit={this.handleSubmit}>
           <div className="inputs">
             <input placeholder="username" type="text" autoFocus="autofocus" value={this.state.username} onChange={this.update('username')}></input>
