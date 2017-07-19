@@ -7,8 +7,9 @@
     left: 50%;
     min-width: 346px;
     min-height: 350px;
-    border: 2px solid black;
+    border: 2px solid lightgray;
     border-radius: 10px;
+    box-shadow: 1px 1px 7px gray;
     background-color: white;
     transform: translate(-50%, -50%);
     display: flex;
