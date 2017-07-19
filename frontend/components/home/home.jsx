@@ -8,9 +8,11 @@ class Home extends React.Component{
 
   render(){
     if (this.props.currentUser) {
+      let username = this.props.currentUser.username;
+      username = username[0].toLocaleUpperCase() + username.slice(1);
       return(
         <div className="welcome-user">
-          <h2>Welcome {this.props.currentUser.username}</h2>
+          <h2>Welcome {username}</h2>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button className="login-button" onClick={this.props.logout}>Logout</button>
         </div>

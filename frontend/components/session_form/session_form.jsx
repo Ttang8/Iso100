@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
 
 class SessionForm extends Component{
   constructor(props){
@@ -56,7 +57,7 @@ class SessionForm extends Component{
       setTimeout(() => this.setState({password: password.slice(0, i + 1)}), ((i + username.length) * 50));
     }
     const user = {username: 'GuestAccount', password: 'password'};
-    setTimeout(() => this.props.processForm({user}), (1350));
+    setTimeout(() => this.props.login({user}), (1350));
   }
 
   renderErrors(){
@@ -72,7 +73,7 @@ class SessionForm extends Component{
   }
 
   render() {
-    console.log(this.state.modalIsOpen);
+    console.log(this.props.formType);
     if (!this.state.modalIsOpen) {
       this.openModal();
     }
@@ -86,6 +87,8 @@ class SessionForm extends Component{
           contentLabel="SessionFormModal"
           className="session-modal"
         >
+
+        <div>{this.props.formType === 'login' ? 'Log In' : 'Create Account'}</div>
         <div className="errors">
           {this.renderErrors()}
         </div>
@@ -99,7 +102,16 @@ class SessionForm extends Component{
           <input className="login-button modal-button" type="submit" value="Submit"></input>
           <button className="login-button modal-button" type="button" onClick={this.handleDemo}>Demo</button>
         </form>
-        <div className="close-button">
+        <div className="small-text">
+          {this.props.formType === 'login' ?
+            <div>Need an account?&nbsp;
+              <Link className="fade-gray" to="/signup">Sign Up</Link>
+            </div> :
+            <div>Already have an account?&nbsp;
+              <Link className="fade-gray" to="/login">Log In</Link>
+            </div>}
+        </div>
+        <div className="close-button" >
           <button onClick={this.closeModal}>Close</button>
         </div>
         </Modal>
