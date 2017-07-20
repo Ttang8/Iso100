@@ -38,7 +38,8 @@ class PhotoUploadForm extends Component {
     event.preventDefault();
     const photo = this.state;
     console.log(this.state);
-    this.props.createPhoto({photo});
+    this.props.createPhoto({photo})
+    .then(()=> this.props.history.push('/#/home'));
   }
 
   update(field){
