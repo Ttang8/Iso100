@@ -1,8 +1,10 @@
 import React from 'react';
-import HomeContainer from './home/home_container';
+import NavContainer from './nav/nav_container';
 import SessionFormContainer from './session_form/session_form_container';
 import { Link, Route } from 'react-router-dom';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import PhotoUploadFormContainer from './photo/photo_upload_form_container';
+import HomeContainer from './home/home_container';
 
 const App = () => (
   <div>
@@ -16,8 +18,11 @@ const App = () => (
             </h1>
           </div>
         </Link>
-        <HomeContainer />
+        <Link to="/photo-upload">Upload Photo</Link>
+        <ProtectedRoute path="/photo-upload" component={PhotoUploadFormContainer} />
+        <NavContainer />
       </header>
+    <HomeContainer />  
     </div>
     <AuthRoute path="/login" component={SessionFormContainer}/>
     <AuthRoute path="/signup" component={SessionFormContainer}/>

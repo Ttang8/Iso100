@@ -21,6 +21,10 @@ class SessionForm extends Component{
     this.closeModal = this.closeModal.bind(this);
   }
 
+  componentWillMount () {
+    this.props.clearErrors();
+  }
+
   update(field){
     return event => this.setState({[field]: event.target.value});
   }

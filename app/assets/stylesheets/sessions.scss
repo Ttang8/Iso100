@@ -5,7 +5,7 @@
     position: fixed;
     top: 40%;
     left: 50%;
-    min-width: 346px;
+    min-width: 375px;
     min-height: 350px;
     border: 2px solid lightgray;
     border-radius: 10px;
@@ -22,6 +22,7 @@
 
 .submitform {
   display: flex;
+  min-height: 300px;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -51,6 +52,7 @@
 }
 
 .errors {
+  margin: 10px;
   color :red;
 }
 
@@ -64,4 +66,8 @@
 
 .small-text {
   font-size: 15px;
+}
+
+input.login-button.modal-button {
+    padding-left: 73px;
 }

@@ -1,31 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 
-class Home extends React.Component{
-  constructor(props){
+class Home extends Component {
+  constructor(props) {
     super(props);
+
+
   }
 
-  render(){
-    if (this.props.currentUser) {
-      let username = this.props.currentUser.username;
-      username = username[0].toLocaleUpperCase() + username.slice(1);
-      return(
-        <div className="welcome-user">
-          <h2>Welcome {username}</h2>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button className="login-button" onClick={this.props.logout}>Logout</button>
-        </div>
-      );
-    } else {
-      return(
-        <nav>
-          <Link className="login-button" to="/login">Log In</Link>
-          &nbsp;or&nbsp;
-          <Link className="signup-button" to="/signup">Sign Up</Link>
-        </nav>
-      );
-    }
+  componentDidMount () {
+    this.props.requestPhotos();
+  }
+
+  render () {
+      if (this.props.photos[0]) {
+        const photoList = this.props.photos.map((photo) => (
+          <li className="main-page-photos">
+            <img src={photo.image_url}></img>
+          </li>
+        ));
+        return (
+          <div>
+            <ul className="main-page-photo-container">
+              {photoList}
+            </ul>
+          </div>
+        );
+      } else {
+        return (
+          <div>Fetching Pictures</div>
+        );
+      }
   }
 }
 

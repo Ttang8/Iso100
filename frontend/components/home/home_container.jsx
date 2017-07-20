@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
 import Home from './home';
-import { logout } from '../../actions/session_actions';
+import { selectAllPhotos } from '../../reducers/selectors';
+import { requestPhotos } from '../../actions/photo_actions';
 
-const mapStateToProps = ({session}) => ({
-  currentUser: session.currentUser
-});
+const mapStateToProps = ({photos}) => {
+  return {
+    photos: selectAllPhotos(photos)
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
+  requestPhotos: () => dispatch(requestPhotos())
 });
 
 export default connect(
