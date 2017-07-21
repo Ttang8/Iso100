@@ -13,7 +13,7 @@
 #
 
 class Photo < ApplicationRecord
-  validates :title, :description, :image_url, presence: true
+  validates :title, :image_url, presence: true
 
   belongs_to :user
 end

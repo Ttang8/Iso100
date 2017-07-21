@@ -12,4 +12,46 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding-top: 150px;
+  background-color: rgb(243,245,246);
+}
+
+
+.photo-detail-view {
+  padding-top: 150px;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  max-height: auto;
+}
+
+.photo-detail-container {
+  display: flex;
+  justify-content: center;
+}
+
+.photo-detail-user-information {
+  margin-right: 100px;
+  font-size: 20px;
+}
+
+.photo-detail-comments, .photo-detail-user-information {
+  border: 1px solid black;
+  width: 450px;
+  height: auto;
+}
+
+.photo-detail-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.photo-detail-description {
+  font-size: 16px;
+  border-bottom: 1px solid black;
 }

@@ -10,6 +10,7 @@ class PhotoUploadForm extends Component {
       title: "",
       description: "",
       image_url: "",
+      thumbnail_url: "",
       modalIsOpen: true
     };
 
@@ -28,7 +29,7 @@ class PhotoUploadForm extends Component {
           console.log(errors);
         } else {
           console.log(image);
-          this.setState({image_url: image[0].url});
+          this.setState({image_url: image[0].url, thumbnail_url: image[0].thumbnail_url});
         }
       }
     );
@@ -37,9 +38,8 @@ class PhotoUploadForm extends Component {
   handleSubmit (event) {
     event.preventDefault();
     const photo = this.state;
-    console.log(this.state);
     this.props.createPhoto({photo})
-    .then(()=> this.props.history.push('/#/home'));
+    .then(()=> this.props.history.push('/home'));
   }
 
   update(field){
@@ -68,17 +68,25 @@ class PhotoUploadForm extends Component {
         >
 
         <form className="upload-photo-form" onSubmit={this.handleSubmit}>
+          <div className="upload-photo-button">
+            <button className="gray-fade" onClick={this.handleUpload}>Upload Image&nbsp;
+              <i className="fa fa-cloud-upload" aria-hidden="true"></i>
+            </button>
+            <img className="thumbnail-image"src={this.state.thumbnail_url}></img>
+          </div>
+
           <div className="inputs">
-            <input placeholder="Title" type="text" autoFocus="autofocus" value={this.state.title} onChange={this.update('title')}></input>
+            <input placeholder="Title - required" type="text" autoFocus="autofocus" value={this.state.title} onChange={this.update('title')}></input>
           </div>
           <div className="inputs">
             <textarea placeholder="Description" type="text" value={this.state.description} onChange={this.update('description')}>
             </textarea>
           </div>
-          <button onClick={this.handleUpload}>Upload Image</button>
           <input className="login-button modal-button" type="submit" value="Submit"></input>
         </form>
-        <button onClick={this.closeModal}>Close</button>
+        <div className="close-button" >
+          <button onClick={this.closeModal}>Close</button>
+        </div>
         </Modal>
       </div>
 

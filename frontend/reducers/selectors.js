@@ -1,3 +1,4 @@
-export const selectAllPhotos = (photos) => (
-  Object.keys(photos).map((id) => (photos[id]))
-);
+export const selectAllPhotos = (photos) => {
+  let arr = Object.keys(photos).map((id) => (photos[id]));
+  return arr.reverse();
+};

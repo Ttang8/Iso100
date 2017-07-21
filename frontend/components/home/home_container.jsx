@@ -3,8 +3,9 @@ import Home from './home';
 import { selectAllPhotos } from '../../reducers/selectors';
 import { requestPhotos } from '../../actions/photo_actions';
 
-const mapStateToProps = ({photos}) => {
+const mapStateToProps = ({photos, session}) => {
   return {
+    loggedIn: Boolean(session.currentUser),
     photos: selectAllPhotos(photos)
   };
 };

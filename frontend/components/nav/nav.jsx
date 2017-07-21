@@ -4,6 +4,14 @@ import { Link } from 'react-router-dom';
 class Nav extends React.Component{
   constructor(props){
     super(props);
+
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout(event){
+    console.log(this.props);
+    event.preventDefault();
+    this.props.logout();
   }
 
   render(){
@@ -14,7 +22,7 @@ class Nav extends React.Component{
         <div className="welcome-user">
           <h2>Welcome {username}</h2>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button className="login-button" onClick={this.props.logout}>Logout</button>
+          <button className="login-button" onClick={this.handleLogout}>Logout</button>
         </div>
       );
     } else {

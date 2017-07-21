@@ -1,5 +1,9 @@
 class Api::PhotosController < ApplicationController
 
+  def show
+    @photo = Photo.find(params[:id])
+  end
+
   def create
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id

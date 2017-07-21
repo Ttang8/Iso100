@@ -4,15 +4,7 @@ import { RECEIVE_PHOTO,
 import merge from 'lodash/merge';
 
 
-const initialPhoto = Object.freeze({
-  title: "",
-  description: "",
-  user_id: 0,
-  album_id: 0,
-  tags: [],
-  comments: [],
-  errors: []
-});
+const initialPhoto = {};
 
 const PhotoReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -20,16 +12,16 @@ const PhotoReducer = (state = {}, action) => {
     case RECEIVE_PHOTOS:
       return merge({}, action.photos);
     case RECEIVE_PHOTO:
-      return merge({}, state, action.photo);
+      return merge({}, state, {[action.photo.id]: action.photo});
     case REMOVE_PHOTO:
       let dup = merge({}, state);
       delete dup[action.photo.id];
       return merge({}, dup);
     case RECEIVE_ERRORS:
       const errors = action.errors;
-      return Object.assign({}, initialPhoto, { errors });
+      return Object.assign({}, state, { errors });
     case CLEAR_ERRORS:
-      return Object.assign({}, initialPhoto, { errors: []} );
+      return Object.assign({}, state, { errors: []} );
   default:
     return state;
   }

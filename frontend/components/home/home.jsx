@@ -1,35 +1,52 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-
-
   }
 
   componentDidMount () {
     this.props.requestPhotos();
   }
 
-  render () {
-      if (this.props.photos[0]) {
-        const photoList = this.props.photos.map((photo) => (
-          <li className="main-page-photos">
+  homePage () {
+    if (this.props.photos[0]) {
+      const photoList = this.props.photos.map((photo) => (
+        <li className="main-page-photos">
+          <Link to={`/photos/${photo.id}`} >
             <img src={photo.image_url}></img>
-          </li>
-        ));
-        return (
-          <div>
-            <ul className="main-page-photo-container">
-              {photoList}
-            </ul>
-          </div>
-        );
-      } else {
-        return (
-          <div>Fetching Pictures</div>
-        );
-      }
+          </Link>
+        </li>
+      ));
+      return (
+        <div className="main-page-photo-container-div">
+          <ul className="main-page-photo-container">
+            {photoList}
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <div>Fetching Pictures</div>
+      );
+    }
+  }
+
+  splashPage () {
+    return (
+      <div className="fullscreen-bg">
+        <img src="http://res.cloudinary.com/iso100app/image/upload/v1500577154/camera-samsung-nx-300-samsung-nx-300-39342_vbdbov.jpg"></img>
+      </div>
+    );
+  }
+
+  render () {
+    if (this.props.loggedIn) {
+      return this.homePage();
+    } else {
+      return this.splashPage();
+    }
   }
 }
 

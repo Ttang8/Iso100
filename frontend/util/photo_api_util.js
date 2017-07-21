@@ -13,10 +13,10 @@ export const updatePhoto = photo => (
   })
 );
 
-export const requestPhoto = photo => (
+export const requestPhoto = photoId => (
   $.ajax({
     method: 'GET',
-    url: `/api/photos/${photo.id}`
+    url: `/api/photos/${photoId}`
   })
 );
 
