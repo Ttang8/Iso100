@@ -31,7 +31,11 @@ export const clearErrors = () => ({
 });
 
 export const createPhoto = photo => dispatch => (
-  APIUtil.createPhoto(photo).then(photo => dispatch(receivePhoto(photo)))
+  APIUtil.createPhoto(photo).then(photo => (
+    dispatch(receivePhoto(photo))
+  ),errors => (
+    dispatch(receiveErrors(errors.responseJSON))
+  ))
 );
 
 export const requestPhoto = photo => dispatch => (
@@ -47,5 +51,9 @@ export const deletePhoto = photo => dispatch => (
 );
 
 export const updatePhoto = photo => dispatch => (
-  APIUtil.updatePhoto(photo).then(photo => dispatch(receivePhoto(photo)))
+  APIUtil.updatePhoto(photo).then(photo => (
+    dispatch(receivePhoto(photo))
+  ),errors => (
+    dispatch(receiveErrors(errors.responseJSON))
+  ))
 );

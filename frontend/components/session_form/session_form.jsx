@@ -12,6 +12,8 @@ class SessionForm extends Component{
       modalIsOpen: true
     };
 
+    this.props.clearErrors();
+    
     this.toggleModal = {toggle:true};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
@@ -65,6 +67,7 @@ class SessionForm extends Component{
   }
 
   renderErrors(){
+    console.log(this.props.errors);
     return(
       <ul>
         {this.props.errors.map((error, idx) => (

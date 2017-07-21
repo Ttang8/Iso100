@@ -14,6 +14,7 @@ class PhotoUploadForm extends Component {
       modalIsOpen: true
     };
 
+    this.props.clearErrors();
     this.handleUpload = this.handleUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -21,14 +22,25 @@ class PhotoUploadForm extends Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
+  renderErrors(){
+    console.log(this.props.errors);
+    return(
+      <ul>
+        {this.props.errors.map((error, idx) => (
+          <li key={idx}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   handleUpload (event) {
     event.preventDefault();
     cloudinary.openUploadWidget(
       window.CLOUDINARY_OPTIONS, (errors, image) => {
         if (errors) {
-          console.log(errors);
         } else {
-          console.log(image);
           this.setState({image_url: image[0].url, thumbnail_url: image[0].thumbnail_url});
         }
       }
@@ -39,7 +51,7 @@ class PhotoUploadForm extends Component {
     event.preventDefault();
     const photo = this.state;
     this.props.createPhoto({photo})
-    .then(()=> this.props.history.push('/home'));
+    .then(()=> this.props.history.push('/'));
   }
 
   update(field){
@@ -52,7 +64,7 @@ class PhotoUploadForm extends Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
-    // this.props.clearErrors();
+    this.props.clearErrors();
     this.props.history.push('/');
   }
 
@@ -66,6 +78,9 @@ class PhotoUploadForm extends Component {
           contentLabel="UploadFormModal"
           className="session-modal"
         >
+        <div className="errors">
+          {this.renderErrors()}
+        </div>
 
         <form className="upload-photo-form" onSubmit={this.handleSubmit}>
           <div className="upload-photo-button">

@@ -6,13 +6,10 @@ class PhotoDetailView extends Component {
   }
 
   componentDidMount () {
-    console.log('mount');
     this.props.requestPhoto(this.props.photoId);
   }
 
   render () {
-    console.log('render');
-    console.log(this.props);
     if (this.props.photo) {
       return (
         <div>
@@ -21,7 +18,7 @@ class PhotoDetailView extends Component {
           </div>
           <div className="photo-detail-container">
             <div className="photo-detail-user-information">
-              {this.props.currentUser.username}
+              {this.props.photo.username}
             <div/>
             <div className="photo-detail-title">
               {this.props.photo.title}
@@ -35,7 +32,7 @@ class PhotoDetailView extends Component {
             </div>
           </div>
           <footer>
-            
+
           </footer>
         </div>
       );

@@ -12,11 +12,11 @@ const SessionReducer = (state = nullUser, action) => {
     case RECEIVE_CURRENT_USER:
       const currentUser = action.currentUser;
       return Object.assign({}, nullUser, { currentUser });
-    case RECEIVE_ERRORS:
-      const errors = action.errors;
-      return Object.assign({}, nullUser, { errors });
-    case CLEAR_ERRORS:
-      return Object.assign({}, nullUser, { errors: []} );
+    // case RECEIVE_ERRORS:
+    //   const errors = action.errors;
+    //   return Object.assign({}, nullUser, { errors });
+    // case CLEAR_ERRORS:
+    //   return Object.assign({}, nullUser, { errors: []} );
     default:
       return state;
   }

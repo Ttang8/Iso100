@@ -11,12 +11,19 @@ class Home extends Component {
   }
 
   homePage () {
+    console.log(this.props);
     if (this.props.photos[0]) {
       const photoList = this.props.photos.map((photo) => (
         <li className="main-page-photos">
+          <div className="homepage-photo-user">
+            {photo.username}
+          </div>
           <Link to={`/photos/${photo.id}`} >
             <img src={photo.image_url}></img>
           </Link>
+          <div className="homepage-photo-title">
+            {photo.title}
+          </div>
         </li>
       ));
       return (
