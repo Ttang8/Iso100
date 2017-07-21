@@ -19,8 +19,10 @@ class Nav extends React.Component{
       let username = this.props.currentUser.username;
       username = username[0].toLocaleUpperCase() + username.slice(1);
       return(
-        <div className="welcome-user">
-          <h2>Welcome {username}</h2>
+        <div className="welcome-user">Welcome&nbsp;
+          <Link className="only-fade-gray" to={`/userpage/${this.props.currentUser.id}`} >
+            <h2>{username}</h2>
+          </Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button className="login-button" onClick={this.handleLogout}>Logout</button>
         </div>
