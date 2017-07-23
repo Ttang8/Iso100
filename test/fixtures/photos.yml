@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  title       :string           not null
-#  description :string           not null
+#  description :string
 #  image_url   :string           not null
 #  user_id     :integer          not null
 #  album_id    :integer

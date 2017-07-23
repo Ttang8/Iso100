@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
+import HomeContainer from '../home/home_container';
 
 class SessionForm extends Component{
   constructor(props){
@@ -13,7 +14,7 @@ class SessionForm extends Component{
     };
 
     this.props.clearErrors();
-    
+
     this.toggleModal = {toggle:true};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
@@ -67,7 +68,6 @@ class SessionForm extends Component{
   }
 
   renderErrors(){
-    console.log(this.props.errors);
     return(
       <ul>
         {this.props.errors.map((error, idx) => (
@@ -79,6 +79,8 @@ class SessionForm extends Component{
     );
   }
 
+
+
   render() {
     if (!this.state.modalIsOpen) {
       this.openModal();
@@ -86,6 +88,7 @@ class SessionForm extends Component{
 
     return(
       <div className="session-form">
+        <HomeContainer />
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}

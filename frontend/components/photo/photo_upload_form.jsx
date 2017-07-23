@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
+import HomeContainer from '../home/home_container';
+import UserPageContainer from '../user_page/user_page_container';
 
 class PhotoUploadForm extends Component {
   constructor (props) {
@@ -23,7 +25,6 @@ class PhotoUploadForm extends Component {
   }
 
   renderErrors(){
-    console.log(this.props.errors);
     return(
       <ul>
         {this.props.errors.map((error, idx) => (
@@ -71,6 +72,7 @@ class PhotoUploadForm extends Component {
   render () {
     return (
       <div>
+        <HomeContainer />
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}

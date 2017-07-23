@@ -14,7 +14,7 @@ class Home extends Component {
     if (this.props.photos[0]) {
       const photoList = this.props.photos.map((photo) => (
         <li className="main-page-photos">
-          <div >
+          <div className="homepage-photo-title">
             <Link className="homepage-photo-user" to={`/userpage/${photo.user_id}`} >
               {photo.username}
             </Link>

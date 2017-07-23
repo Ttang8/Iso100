@@ -7,6 +7,8 @@ import NavBar from './nav/navbar';
 import FootBar from './footer_bar/footer_bar';
 import PhotoDetailViewContainer from './photo/photo_detail_view_container';
 import UserPageContainer from './user_page/user_page_container';
+import PhotoUploadFormContainer from './photo/photo_upload_form_container';
+
 
 const App = () => (
   <div>
@@ -17,7 +19,7 @@ const App = () => (
     <Route exact path="/" component={HomeContainer} />
     <ProtectedRoute path="/photos/:photoId" component={PhotoDetailViewContainer} />
     <ProtectedRoute path="/userpage/:userId" component={UserPageContainer} />
-
+    <ProtectedRoute path="/photo-upload" component={PhotoUploadFormContainer} />
 
     <AuthRoute path="/login" component={SessionFormContainer}/>
     <AuthRoute path="/signup" component={SessionFormContainer}/>

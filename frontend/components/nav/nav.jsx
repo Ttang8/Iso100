@@ -9,9 +9,9 @@ class Nav extends React.Component{
   }
 
   handleLogout(event){
-    console.log(this.props);
     event.preventDefault();
     this.props.logout();
+    this.props.history.push('/');
   }
 
   render(){

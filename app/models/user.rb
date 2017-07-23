@@ -8,6 +8,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_image_url  :string
 #
 
 class User < ApplicationRecord
@@ -19,6 +20,8 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :photos, dependent: :destroy
+  has_many :albums, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

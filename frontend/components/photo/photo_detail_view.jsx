@@ -12,7 +12,7 @@ class PhotoDetailView extends Component {
   render () {
     if (this.props.photo) {
       return (
-        <div>
+        <div className="photo-detail-view-container">
           <div className="photo-detail-view">
             <img className="group" src={this.props.photo.image_url}></img>
           </div>
