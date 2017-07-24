@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Masonry from 'react-masonry-component';
+import PhotoUploadFormContainer from '../photo/photo_upload_form_container';
+import { AuthRoute, ProtectedRoute } from '../../util/route_util';
+
+const masonryOptions = {
+  fitWidth: true,
+  stagger: 100,
+  gutter: 3,
+  transitionDuration: '0.8s'
+};
 
 class UserPage extends Component {
   constructor(props) {
@@ -34,10 +43,15 @@ class UserPage extends Component {
             <div className="user-page-user-information">
               {this.props.userPhotos[0] ? this.props.userPhotos[0].username : "" }
             </div>
+            <div className="photostream-albums-bar">
+              <NavLink to="/users/photos">Photostream</NavLink>
+              <NavLink to={`/albums/${this.props.userId}`}>Albums</NavLink>
+            </div>
               <Masonry
                 className={'masonry-user-page'}
-                elementType={'ul'}>
-              {photoList[0] ? photoList : <h1>You have no public photos</h1> }
+                elementType={'ul'}
+                options={masonryOptions}>
+              {photoList}
             </Masonry>
           </div>
         </div>

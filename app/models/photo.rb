@@ -16,7 +16,7 @@ class Photo < ApplicationRecord
   validates :title, :image_url, presence: true
 
   belongs_to :user
-  belongs_to :album
+  # belongs_to :album
   has_many :comments, dependent: :destroy
   has_many :taggings, dependent: :destroy
 end

@@ -4,10 +4,13 @@ import configureStore from './store/store';
 import Root from './components/root';
 import {login} from './actions/session_actions';
 import {requestPhotos, createPhoto} from './actions/photo_actions';
+import {requestAlbums, createAlbum} from './actions/album_actions';
 
 window.login = login;
 window.requestPhotos = requestPhotos;
 window.createPhoto = createPhoto;
+window.requestAlbums = requestAlbums;
+window.createAlbum = createAlbum;
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;

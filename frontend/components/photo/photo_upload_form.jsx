@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, matchPath } from 'react-router-dom';
 import Modal from 'react-modal';
 import HomeContainer from '../home/home_container';
 import UserPageContainer from '../user_page/user_page_container';
@@ -51,8 +51,9 @@ class PhotoUploadForm extends Component {
   handleSubmit (event) {
     event.preventDefault();
     const photo = this.state;
-    this.props.createPhoto({photo})
-    .then(()=> this.props.history.push('/'));
+    this.props.createPhoto({photo});
+    this.props.history.push(`/userpage/${this.props.session.currentUser.id}`);
+    // window.location.reload();
   }
 
   update(field){
@@ -67,6 +68,7 @@ class PhotoUploadForm extends Component {
     this.setState({modalIsOpen: false});
     this.props.clearErrors();
     this.props.history.push('/');
+    // window.location.reload();
   }
 
   render () {
@@ -86,14 +88,15 @@ class PhotoUploadForm extends Component {
 
         <form className="upload-photo-form" onSubmit={this.handleSubmit}>
           <div className="upload-photo-button">
-            <button className="gray-fade" onClick={this.handleUpload}>Upload Image&nbsp;
+            <button className="gray-fade" onClick={this.handleUpload}>
               <i className="fa fa-cloud-upload" aria-hidden="true"></i>
+              &nbsp;Upload Image
             </button>
             <img className="thumbnail-image"src={this.state.thumbnail_url}></img>
           </div>
 
           <div className="inputs">
-            <input placeholder="Title - required" type="text" autoFocus="autofocus" value={this.state.title} onChange={this.update('title')}></input>
+            <input placeholder="Title - required" type="text" value={this.state.title} onChange={this.update('title')}></input>
           </div>
           <div className="inputs">
             <textarea placeholder="Description" type="text" value={this.state.description} onChange={this.update('description')}>

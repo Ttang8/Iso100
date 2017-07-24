@@ -14,19 +14,36 @@ header {
   align-items: center;
   font-size: 20px;
   border-bottom: 1px solid black;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Roboto', sans-serif;
 }
 
 .logo-pic {
   display: flex;
   align-items: center;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+
+.sitename {
+  align-items: center;
+  font-weight: 700px;
+}
+
+.sitename-100 {
+  font-weight: 700px;
+}
+
+.sitename-container {
+  display: flex;
+  align-items: baseline;
 }
 
 .logo-and-pic-container {
   display: flex;
   align-items: center;
+  height: 60px;
 }
 
 .welcome-user {
@@ -35,7 +52,7 @@ header {
 }
 
 .login-button, .signup-button {
-  background-color: lightgrey;
+  background-color: rgb(7, 207, 88);
   border-radius: 5px;
   padding: 5px;
 }

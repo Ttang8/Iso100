@@ -8,6 +8,7 @@ const mapStateToProps = ({photos}, routeProps) => {
   let userId = routeProps.match.params.userId;
   let allPhotos = selectAllPhotos(photos);
   return {
+    userId: userId,
     userPhotos: selectUserPhotos(allPhotos, userId)
   };
 };

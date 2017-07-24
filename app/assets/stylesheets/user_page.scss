@@ -74,13 +74,11 @@
 @media all and (min-width: 900px) {
 
   .masonry-user-page {
-    display: flex;
-    justify-content: center;
+    margin: 0 auto;
   }
 
   .user-page-photos {
-    width: 32%;
+    width: 400px;
     height: auto;
-    margin: 3px;
   }
 }

@@ -24,15 +24,21 @@ class Nav extends React.Component{
             <h2>{username}</h2>
           </Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button className="login-button" onClick={this.handleLogout}>Logout</button>
+          <button className="login-button" onClick={this.handleLogout}>
+            <i className="fa fa-sign-out" aria-hidden="true"></i>&nbsp;
+            Logout</button>
         </div>
       );
     } else {
       return(
         <nav>
-          <Link className="login-button" to="/login">Log In</Link>
+          <Link className="login-button" to="/login">
+            <i className="fa fa-sign-in" aria-hidden="true"></i>&nbsp;
+            Log In</Link>
           &nbsp;or&nbsp;
-          <Link className="signup-button" to="/signup">Sign Up</Link>
+          <Link className="signup-button" to="/signup">
+            <i className="fa fa-arrow-up" aria-hidden="true"></i>&nbsp;
+            Sign Up</Link>
         </nav>
       );
     }

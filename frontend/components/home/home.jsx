@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Masonry from 'react-masonry-component';
+
+const masonryOptions = {
+  fitWidth: true,
+  stagger: 100,
+  transitionDuration: '0.8s'
+};
 
 class Home extends Component {
   constructor(props) {
@@ -29,9 +36,12 @@ class Home extends Component {
       ));
       return (
         <div className="main-page-photo-container-div">
-          <ul className="main-page-photo-container">
+          <Masonry
+            className={'masonry-home-page'}
+            elementType={'ul'}
+            options={masonryOptions}>
             {photoList}
-          </ul>
+          </Masonry>
         </div>
       );
     } else {
@@ -44,7 +54,11 @@ class Home extends Component {
   splashPage () {
     return (
       <div className="fullscreen-bg">
-        <img src="http://res.cloudinary.com/iso100app/image/upload/v1500577154/camera-samsung-nx-300-samsung-nx-300-39342_vbdbov.jpg"></img>
+        <div className="landing-section">Show your story through your lens.
+          <br />
+          <Link to="/login">Get Started</Link>
+        </div>
+        <img src="http://res.cloudinary.com/iso100app/image/upload/v1500864787/background1_wiy28m.jpg"></img>
       </div>
     );
   }

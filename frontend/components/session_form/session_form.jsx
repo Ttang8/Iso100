@@ -97,7 +97,9 @@ class SessionForm extends Component{
           className="session-modal"
         >
 
-        <div>{this.props.formType === 'login' ? 'Log In' : 'Create Account'}</div>
+        <div>
+          <br />
+          {this.props.formType === 'login' ? 'Log In' : 'Create Account'}</div>
         <div className="errors">
           {this.renderErrors()}
         </div>
