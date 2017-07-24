@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Masonry from 'react-masonry-component';
 import PhotoUploadFormContainer from '../photo/photo_upload_form_container';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
+import AlbumFormContainer from '../album/album_form_container';
 
 const masonryOptions = {
   fitWidth: true,
@@ -14,13 +15,26 @@ const masonryOptions = {
 class UserPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      displayPhotos: true,
+      openAlbumModal: false
+    };
+
+    this.toggleTrue = this.toggleTrue.bind(this);
+    this.toggleFalse = this.toggleFalse.bind(this);
+    this.handleAlbumModal = this.handleAlbumModal.bind(this);
   }
 
   componentDidMount () {
     this.props.requestPhotos();
+    this.props.requestAlbums();
   }
 
-  render () {
+  handleAlbumModal() {
+    this.setState({openAlbumModal: true});
+  }
+
+  handlePhotos() {
     const photoList = this.props.userPhotos.map((photo) => (
       <li className="user-page-photos">
         <Link to={`/photos/${photo.id}`} >
@@ -37,23 +51,47 @@ class UserPage extends Component {
         </Link>
       </li>
     ));
+
+    return(
+      <Masonry
+        className={'masonry-user-page'}
+        elementType={'ul'}
+        options={masonryOptions}>
+      {photoList}
+    </Masonry>
+  );
+  }
+
+  handleAlbums(){
     return (
-        <div>
+      <div className="albums-container">
+        <div className="add-new-album" onClick={this.handleAlbumModal} ></div>
+      </div>
+    );
+  }
+
+  toggleTrue(){
+    this.setState({displayPhotos: true});
+  }
+
+  toggleFalse(){
+    this.setState({displayPhotos: false});
+  }
+
+  render () {
+    return (
+        <div className="backgrounds">
           <div className="user-page-container">
             <div className="user-page-user-information">
               {this.props.userPhotos[0] ? this.props.userPhotos[0].username : "" }
             </div>
             <div className="photostream-albums-bar">
-              <NavLink to="/users/photos">Photostream</NavLink>
-              <NavLink to={`/albums/${this.props.userId}`}>Albums</NavLink>
+              <button type="button" onClick={this.toggleTrue}>Photostream</button>
+              <button type="button" onClick={this.toggleFalse}>Albums</button>
             </div>
-              <Masonry
-                className={'masonry-user-page'}
-                elementType={'ul'}
-                options={masonryOptions}>
-              {photoList}
-            </Masonry>
+              {this.state.displayPhotos ? this.handlePhotos() : this.handleAlbums()}
           </div>
+          {this.state.openAlbumModal ? <AlbumFormContainer /> : ""}
         </div>
     );
   }

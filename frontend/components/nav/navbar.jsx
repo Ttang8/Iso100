@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import { ProtectedRoute } from '../../util/route_util';
 import NavContainer from './nav_container';
-import Modal from 'react-modal';
 
 class NavBar extends Component {
   constructor (props) {
@@ -12,7 +11,7 @@ class NavBar extends Component {
   createLink () {
     if (this.props.currentUser) {
       return (
-        <Link to={`/userpage/${this.props.currentUser.id}/photo-upload`}>
+        <Link to={`/photo-upload/${this.props.currentUser.id}/`}>
           <i className="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>
         </Link>
       );

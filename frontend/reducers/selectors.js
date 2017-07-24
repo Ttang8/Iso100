@@ -15,3 +15,21 @@ export const selectUserPhotos = (photos, userId) => {
 
   return newArr;
 };
+
+export const selectAllAlbums = (albums) => {
+  let arr = Object.keys(albums).map((id) => (albums[id]));
+  return arr.reverse();
+};
+
+export const selectUserAlbums = (albums, userId) => {
+  let newArr = [];
+  albums.forEach((album, idx) => {
+    let num = album.user_id;
+    let n = num.toString();
+    if (n === userId) {
+      newArr.push(album);
+    }
+  });
+
+  return newArr;
+};

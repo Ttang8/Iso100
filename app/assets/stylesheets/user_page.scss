@@ -8,13 +8,13 @@
   margin: 5px;
 }
 
-.relative_pos:hover > .user-page-title-username {
-  display: flex;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-}
+// .relative_pos:hover > .user-page-title-username {
+//   display: flex;
+//   top: 0px;
+//   right: 0px;
+//   bottom: 0px;
+//   left: 0px;
+// }
 
 .relative_pos > .user-page-title-username {
   display: none;
@@ -69,6 +69,27 @@
 
 .user-page-title-username a {
   text-align: center;
+}
+
+.photostream-albums-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  color: rgb(64,64,64);
+  height: 60px;
+  margin-bottom: 30px;
+  background-color: white;
+  border-bottom: 1px solid gray;
+}
+
+.photostream-albums-bar button:hover {
+  border-bottom: 3px solid rgb(0, 145, 220);
+  color: black;
+}
+
+.backgrounds {
+  background-color: rgb(243,245,246);
 }
 
 @media all and (min-width: 900px) {

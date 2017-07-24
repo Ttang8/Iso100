@@ -53,7 +53,7 @@ class PhotoUploadForm extends Component {
     const photo = this.state;
     this.props.createPhoto({photo});
     this.props.history.push(`/userpage/${this.props.session.currentUser.id}`);
-    // window.location.reload();
+    window.location.reload();
   }
 
   update(field){
@@ -67,8 +67,8 @@ class PhotoUploadForm extends Component {
   closeModal() {
     this.setState({modalIsOpen: false});
     this.props.clearErrors();
-    this.props.history.push('/');
-    // window.location.reload();
+    this.props.history.push(`/userpage/${this.props.session.currentUser.id}`);
+    window.location.reload();
   }
 
   render () {

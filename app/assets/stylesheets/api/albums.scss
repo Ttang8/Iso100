@@ -1,3 +1,20 @@
 // Place all the styles related to the Api::Albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.albums-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.add-new-album {
+  width: 279px;
+  height: 279px;
+  background-color: red;
+  transition: all .5s;
+}
+
+.add-new-album:hover {
+  width: 265px;
+  height: 265px;
+}
