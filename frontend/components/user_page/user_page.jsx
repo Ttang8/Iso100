@@ -80,7 +80,7 @@ class UserPage extends Component {
 
   toggleAlbumIndex(event){
     event.preventDefault();
-    this.setState({displayPhotos: false, displayAlbumIndex: true, displayAlbums: false, choosenAlbumId: event.currentTarget.value});
+    this.setState({displayPhotos: false, displayAlbumIndex: true, displayAlbums: false, openAlbumModal: false, choosenAlbumId: event.currentTarget.value});
   }
 
   handleAlbums(){
@@ -117,11 +117,11 @@ class UserPage extends Component {
 
 
   togglePhotos(){
-    this.setState({displayPhotos: true, displayAlbumIndex: false, displayAlbums: false});
+    this.setState({displayPhotos: true, displayAlbumIndex: false, displayAlbums: false, openAlbumModal: false});
   }
 
   toggleAlbums(){
-    this.setState({displayPhotos: false, displayAlbumIndex: false, displayAlbums: true});
+    this.setState({displayPhotos: false, displayAlbumIndex: false, displayAlbums: true, openAlbumModal: false});
   }
 
   handleAlbumsIndex(){

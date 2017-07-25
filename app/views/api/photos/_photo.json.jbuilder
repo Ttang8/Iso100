@@ -3,6 +3,6 @@ json.extract! photo.user, :username
 
 json.set! :comments do
   json.array! photo.comments do |comment|
-    json.partial! 'api/comment/comment', comment: comment
+    json.partial! 'api/comments/comment', comment: comment
   end
 end

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CommentFormContainer from '../comment/comment_form_container';
 
 class PhotoDetailView extends Component {
   constructor (props) {
@@ -13,6 +14,7 @@ class PhotoDetailView extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.toggleAddDisplay = this.toggleAddDisplay.bind(this);
+    this.handleBack = this.handleBack.bind(this);
   }
 
   componentDidMount () {
@@ -98,14 +100,11 @@ class PhotoDetailView extends Component {
             <div className="photo-detail-description">
               {this.props.photo.description}
             </div>
+            <CommentFormContainer currentUser={this.props.currentUser} comments={this.props.photo.comments} photoId={this.props.photo.id}/>
           </div>
             <div className="photo-detail-comments">
-
             </div>
           </div>
-          <footer>
-
-          </footer>
         </div>
       );
     } else {

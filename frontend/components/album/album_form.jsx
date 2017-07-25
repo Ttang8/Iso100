@@ -16,7 +16,7 @@ class AlbumForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount(){
+  componentWillMount(){
   }
 
   handleSubmit (event) {
@@ -33,6 +33,7 @@ class AlbumForm extends Component {
   closeModal() {
     this.setState({modalIsOpen: false});
     this.props.clearErrors();
+    // this.openModal();
     window.location.reload();
   }
 

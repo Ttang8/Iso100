@@ -66,9 +66,14 @@
 
 .back-button {
   position: absolute;
-  margin: 2%;
-  margin-left: 41%;
+  margin: -34%;
+  margin-left: -45%;
   display: flex;
+  color: white;
+}
+
+.back-button:hover {
+  text-decoration: underline;
 }
 
 .add-album-form {

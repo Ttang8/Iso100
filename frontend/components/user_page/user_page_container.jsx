@@ -6,7 +6,6 @@ import { requestAlbums, createAlbum } from '../../actions/album_actions';
 
 
 const mapStateToProps = ({photos, albums, session}, routeProps) => {
-  console.log(routeProps);
   let userId = routeProps.match.params.userId;
   let allPhotos = selectAllPhotos(photos);
   let allAlbums = selectAllAlbums(albums);

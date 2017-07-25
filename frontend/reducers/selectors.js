@@ -33,3 +33,7 @@ export const selectUserAlbums = (albums, userId) => {
 
   return newArr;
 };
+
+export const selectComments = (photo) => {
+  return photo.comments.reverse();
+};
