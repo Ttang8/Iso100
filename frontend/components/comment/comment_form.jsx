@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import merge from 'lodash/merge';
+import { Link } from 'react-router-dom';
 
 class CommentForm extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class CommentForm extends Component {
       author: this.props.currentUser.username,
       comments: this.props.comments,
       photo_id: this.props.photoId,
-      body: ""
+      body: "",
+      user_id: this.props.currentUser.id
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +25,8 @@ class CommentForm extends Component {
     let newComments = dupOfState.concat(comment);
     this.props.createComment({comment})
     .then(()=> this.setState({comments: newComments}))
-    .then(()=> this.setState({body: ""}));
+    .then(()=> this.setState({body: ""}))
+    .then(()=> this.props.clearErrors());
   }
 
   handleSubmit(event) {
@@ -33,7 +36,8 @@ class CommentForm extends Component {
       let newComments = dupOfState.concat(comment);
       this.props.createComment({comment})
       .then(()=> this.setState({comments: newComments}))
-      .then(()=> this.setState({body: ""}));
+      .then(()=> this.setState({body: ""}))
+      .then(()=> this.props.clearErrors());
     }
   }
 
@@ -44,10 +48,15 @@ class CommentForm extends Component {
   renderComments() {
     let commentList = this.state.comments.map((comment)=>{
       return(
-        <li key={comment.id}>
-          {comment.author}
-          <br />
-          {comment.body}
+        <li className="comment-chunk"key={comment.id}>
+          <div>
+            <Link className="username-blue" to={`/userpage/${comment.user_id}`}>
+              {comment.author}
+            </Link>
+          </div>
+          <div>
+            {comment.body}
+          </div>
         </li>
       );
     });
@@ -68,17 +77,17 @@ class CommentForm extends Component {
   }
 
   render(){
+    console.log(this.props);
     return(
       <div className="comments-container">
-        <label>Comments</label>
         <ul>
           {this.renderComments()}
         </ul>
         <div className="comment-form">
           {this.renderErrors()}
-          <form>
-            <textarea onKeyPress={this.handleSubmit} placeholder="Comment" type="text" value={this.state.body} onChange={this.update('body')}>
-            </textarea>
+          <form className="comment-input-form">
+            <input className="text-area-comment" onKeyPress={this.handleSubmit} placeholder="Add a Comment" type="text" value={this.state.body} onChange={this.update('body')}>
+            </input>
             <input onClick={this.handleClick} className="login-button modal-button" type="submit" value="Add"></input>
           </form>
         </div>

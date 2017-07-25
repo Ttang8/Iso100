@@ -1,3 +1,38 @@
 // Place all the styles related to the Api::Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.comment-form-container ul li:hover {
+  background-color: white;
+}
+
+.comment-form-container ul li {
+  margin-bottom: 15px;
+}
+
+.username-blue {
+  color: rgb(44, 111, 167);
+}
+
+.username-blue:hover {
+  text-decoration: underline;
+}
+
+.username-show-page:hover {
+  color: rgb(44, 111, 167);
+  text-decoration: underline;
+}
+
+.comment-chunk {
+  border: 1px solid black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.comment-input-form {
+  border: 1px solid black;
+}
+
+.text-area-comment {
+  padding-top: 10px;
+  padding-bottom: 90px;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CommentFormContainer from '../comment/comment_form_container';
+import { Link } from 'react-router-dom';
 
 class PhotoDetailView extends Component {
   constructor (props) {
@@ -97,7 +98,9 @@ class PhotoDetailView extends Component {
           </div>
           <div className="photo-detail-container">
             <div className="photo-detail-user-information">
-              {this.props.photo.username}
+              <Link className="username-show-page"to={`/userpage/${this.props.currentUser.id}`}>
+                {this.props.photo.username}
+              </Link>
             <div/>
             <div className="photo-detail-title">
               {this.props.photo.title}
@@ -105,7 +108,10 @@ class PhotoDetailView extends Component {
             <div className="photo-detail-description">
               {this.props.photo.description}
             </div>
-            <CommentFormContainer currentUser={this.props.currentUser} comments={this.props.photo.comments} photoId={this.props.photo.id}/>
+            <div className="comment-form-container">
+              <label>Comments:</label>
+              <CommentFormContainer currentUser={this.props.currentUser} comments={this.props.photo.comments} photoId={this.props.photo.id}/>
+            </div>
           </div>
             <div className="photo-detail-comments">
             </div>
