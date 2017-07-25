@@ -51,9 +51,9 @@ class PhotoUploadForm extends Component {
   handleSubmit (event) {
     event.preventDefault();
     const photo = this.state;
-    this.props.createPhoto({photo});
-    this.props.history.push(`/userpage/${this.props.session.currentUser.id}`);
-    window.location.reload();
+    this.props.createPhoto({photo})
+    .then(()=>this.props.history.push(`/userpage/${this.props.session.currentUser.id}`))
+    .then(()=>window.location.reload());
   }
 
   update(field){

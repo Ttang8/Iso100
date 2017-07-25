@@ -17,7 +17,6 @@ class AlbumForm extends Component {
   }
 
   componentDidMount(){
-
   }
 
   handleSubmit (event) {

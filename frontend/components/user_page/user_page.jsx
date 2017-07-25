@@ -68,11 +68,13 @@ class UserPage extends Component {
 
   displayCreateAlbum(){
     return (
-      <div className="add-new-album create-album" onClick={this.handleAlbumModal} >
-        <div>Create Album
-          <i className="fa fa-plus-square-o fa-3x" aria-hidden="true"></i>
+      <button onClick={this.handleAlbumModal}>
+        <div className="add-new-album create-album"  >
+          <div>Create Album
+            <i className="fa fa-plus-square-o fa-3x" aria-hidden="true"></i>
+          </div>
         </div>
-      </div>
+      </button>
     );
   }
 
@@ -98,7 +100,7 @@ class UserPage extends Component {
         );
       } else {
       return (
-        <div className="add-new-album">{album.title}
+        <div key={album.id} className="add-new-album">{album.title}
           <br />
           0 photos
         </div>
@@ -163,7 +165,6 @@ class UserPage extends Component {
   }
 
   render () {
-    console.log('render');
     return (
         <div className="backgrounds">
           <div className="user-page-container">
