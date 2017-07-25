@@ -70,11 +70,21 @@ class PhotoDetailView extends Component {
     );
   }
 
+  handleBack(){
+    this.props.history.goBack();
+  }
+
   render () {
     if (this.props.photo) {
       return (
         <div className="photo-detail-view-container">
           <div className="photo-detail-view">
+            <div className="back-button">
+              <button onClick={this.handleBack}>
+                <i className="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;
+                Go Back
+              </button>
+            </div>
             {this.props.photo.user_id === this.props.currentUser.id ? this.displayEdits() : ""}
             <img className="group" src={this.props.photo.image_url}></img>
           </div>

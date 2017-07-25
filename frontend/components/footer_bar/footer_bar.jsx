@@ -5,10 +5,10 @@ const FootBar = () => (
     <div>
       <ul className="footer-icons">
         <li>
-          <i className="fa fa-github" aria-hidden="true"></i>
+            <i className="fa fa-github fa-2x" aria-hidden="true"></i>
         </li>
         <li>
-          <i className="fa fa-linkedin-square" aria-hidden="true"></i>
+          <i className="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
         </li>
       </ul>
     </div>

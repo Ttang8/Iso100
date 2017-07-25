@@ -64,6 +64,13 @@
   font-weight: 700;
 }
 
+.back-button {
+  position: absolute;
+  margin: 2%;
+  margin-left: 41%;
+  display: flex;
+}
+
 .add-album-form {
   display: flex;
   flex-direction: column;
