@@ -19,7 +19,6 @@ class PhotoDetailView extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log(nextProps);
   }
 
   componentDidMount () {
