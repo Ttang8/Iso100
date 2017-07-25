@@ -8,8 +8,9 @@ const mapDispatchToProps = dispatch => ({
   clearErrors: () => dispatch(clearErrors())
 });
 
-const mapStateToProps = ({errors}) => ({
-  errors
+const mapStateToProps = ({errors, session}) => ({
+  errors,
+  currentUser: session.currentUser
 });
 
 export default connect(

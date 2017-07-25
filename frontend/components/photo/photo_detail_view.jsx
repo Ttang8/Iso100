@@ -17,12 +17,17 @@ class PhotoDetailView extends Component {
     this.handleBack = this.handleBack.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+  }
+
   componentDidMount () {
     this.props.requestPhoto(this.props.photoId);
     this.props.requestAlbums();
   }
 
-  handleDelete(){
+  handleDelete(event){
+    event.preventDefault();
     this.props.deletePhoto(this.props.photo);
     this.props.history.goBack();
   }

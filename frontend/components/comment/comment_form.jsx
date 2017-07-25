@@ -1,24 +1,38 @@
 import React, {Component} from 'react';
+import merge from 'lodash/merge';
 
 class CommentForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      author: this.props.currentUser.username,
+      comments: this.props.comments,
       photo_id: this.props.photoId,
       body: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  handleClick(event){
+    event.preventDefault();
+    let comment = this.state;
+    let dupOfState = this.state.comments;
+    let newComments = dupOfState.concat(comment);
+    this.props.createComment({comment})
+    .then(()=> this.setState({comments: newComments}))
+    .then(()=> this.setState({body: ""}));
   }
 
   handleSubmit(event) {
     if(event.key === 'Enter'){
-      const comment = this.state;
+      let comment = this.state;
+      let dupOfState = this.state.comments;
+      let newComments = dupOfState.concat(comment);
       this.props.createComment({comment})
+      .then(()=> this.setState({comments: newComments}))
       .then(()=> this.setState({body: ""}));
     }
   }
@@ -28,7 +42,7 @@ class CommentForm extends Component {
   }
 
   renderComments() {
-    let commentList = this.props.comments.map((comment)=>{
+    let commentList = this.state.comments.map((comment)=>{
       return(
         <li key={comment.id}>
           {comment.author}
@@ -43,7 +57,7 @@ class CommentForm extends Component {
 
   renderErrors(){
     return(
-      <ul>
+      <ul className="errors-color">
         {this.props.errors.map((error, idx) => (
           <li key={idx}>
             {error}
@@ -56,18 +70,18 @@ class CommentForm extends Component {
   render(){
     return(
       <div className="comments-container">
+        <label>Comments</label>
+        <ul>
+          {this.renderComments()}
+        </ul>
         <div className="comment-form">
-          <label>Comments</label>
           {this.renderErrors()}
           <form>
             <textarea onKeyPress={this.handleSubmit} placeholder="Comment" type="text" value={this.state.body} onChange={this.update('body')}>
             </textarea>
-            <input className="login-button modal-button" type="submit" value="Add"></input>
+            <input onClick={this.handleClick} className="login-button modal-button" type="submit" value="Add"></input>
           </form>
         </div>
-        <ul>
-          {this.renderComments()}
-        </ul>
       </div>
 
     );

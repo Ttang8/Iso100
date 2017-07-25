@@ -7,7 +7,6 @@ export const selectUserPhotos = (photos, userId) => {
   let newArr = [];
   photos.forEach((photo, idx) => {
     let num = photo.user_id;
-    // let n = num.toString();
     if (num === parseInt(userId)) {
       newArr.push(photo);
     }
@@ -25,15 +24,10 @@ export const selectUserAlbums = (albums, userId) => {
   let newArr = [];
   albums.forEach((album, idx) => {
     let num = album.user_id;
-    // let n = num.toString();
     if (num === parseInt(userId)) {
       newArr.push(album);
     }
   });
 
   return newArr;
-};
-
-export const selectComments = (photo) => {
-  return photo.comments.reverse();
 };
