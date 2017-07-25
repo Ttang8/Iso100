@@ -16,7 +16,7 @@ class Api::PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
-    if @photo.update_attributes
+    if @photo.update_attributes(photo_params)
       render "api/photos/show"
     else
       render json: @photo.errors.full_messages, status: 400

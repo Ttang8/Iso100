@@ -31,14 +31,49 @@
 .photo-detail-view {
   margin-top: 60px;
   display: flex;
+  position: relative;
   background-color: rgb(33,33,36);
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
   padding-top: 5%;
   padding-bottom: 5%;
   max-height: auto;
+  box-sizing: border-box;
+}
+
+.photo-edit-and-delete {
+  position: absolute;
+  margin: 2%;
+  margin-left: 41%;
+  display: flex;
+}
+
+.photo-edit-and-delete button {
+  min-width: 100px;
+  margin: 10px;
+  background-color: white;
+  justify-content: center;
+  padding: 7px;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.photo-edit-and-delete button:hover {
+  font-weight: 700;
+}
+
+.add-album-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.albums-select {
+  background-color: white;
+  height: 27px;
 }
 
 .photo-detail-view img {

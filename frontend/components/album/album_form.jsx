@@ -16,12 +16,15 @@ class AlbumForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+
+  }
+
   handleSubmit (event) {
     event.preventDefault();
     const album = this.state;
-    this.props.createAlbum({album});
-    // this.props.history.push(`/userpage/${this.props.session.currentUser.id}`);
-    // window.location.reload();
+    this.props.createAlbum({album})
+    .then(()=>this.closeModal());
   }
 
   openModal() {
@@ -30,6 +33,8 @@ class AlbumForm extends Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
+    this.props.clearErrors();
+    window.location.reload();
   }
 
   update(field){

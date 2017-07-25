@@ -4,17 +4,47 @@
 
 .albums-container {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .add-new-album {
+  position: relative;
   width: 279px;
   height: 279px;
-  background-color: red;
+  background-color: lightgray;
   transition: all .5s;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 5px 5px 10px gray;
+  border-radius: 10px;
+}
+
+.create-album {
+  background-color: white;
+}
+
+.add-new-album div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 30px;
 }
 
 .add-new-album:hover {
-  width: 265px;
-  height: 265px;
+  margin-top: 15px;
+}
+
+.album-title-absolute {
+  position: absolute;
+}
+
+.choosenAlbum-title {
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 20px;
 }
