@@ -9,7 +9,7 @@ const masonryOptions = {
   fitWidth: true,
   stagger: 100,
   gutter: 3,
-  transitionDuration: '0.8s'
+  transitionDuration: '0.5s'
 };
 
 class UserPage extends Component {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CommentFormContainer from '../comment/comment_form_container';
-import { Link } from 'react-router-dom';
+import TagFormContainer from '../tag/tag_form_container';
+import { Link, withRouter} from 'react-router-dom';
 
 class PhotoDetailView extends Component {
   constructor (props) {
@@ -24,6 +25,16 @@ class PhotoDetailView extends Component {
   componentDidMount () {
     this.props.requestPhoto(this.props.photoId);
     this.props.requestAlbums();
+  }
+
+  displayAlbumName(){
+    let albumName;
+    this.props.albums.forEach((album)=> {
+      if (album.id === this.props.photo.album_id) {
+        albumName = album.title;
+      }
+    });
+    return albumName || 'None';
   }
 
   handleDelete(event){
@@ -67,7 +78,7 @@ class PhotoDetailView extends Component {
       <div className="photo-edit-and-delete">
         <form onSubmit={this.handleSubmit} className="add-album-form">
           <select className="albums-select" value={this.state.album_id} onChange={this.handleChange} >
-            <option >--Select Album--</option>
+            <option>--Select Album--</option>
             {this.userAlbums()}
           </select>
           <button type="submit" onClick={this.toggleAddDisplay} value="Submit">{this.state.buttonDisplay}</button>
@@ -81,7 +92,32 @@ class PhotoDetailView extends Component {
     this.props.history.goBack();
   }
 
+  renderTags(){
+    let tags = this.props.photo.tags.map((tag)=>{
+      return(
+        <li key={tag.id} >
+          {tag.name}
+        </li>
+      );
+    });
+    return tags;
+
+  }
+
+  renderErrors(){
+    return(
+      <ul className="errors-color">
+        {this.props.errors.map((error, idx) => (
+          <li key={idx}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render () {
+    console.log(this.props);
     if (this.props.photo) {
       return (
         <div className="photo-detail-view-container">
@@ -94,6 +130,12 @@ class PhotoDetailView extends Component {
             </div>
             {this.props.photo.user_id === this.props.currentUser.id ? this.displayEdits() : ""}
             <img className="group" src={this.props.photo.image_url}></img>
+            <div>Selected Album
+              {this.displayAlbumName()}
+            </div>
+          </div>
+          <div>
+            {this.renderErrors()}
           </div>
           <div className="photo-detail-container">
             <div className="photo-detail-user-information">
@@ -109,10 +151,14 @@ class PhotoDetailView extends Component {
             </div>
             <div className="comment-form-container">
               <label>Comments:</label>
-              <CommentFormContainer currentUser={this.props.currentUser} comments={this.props.photo.comments} photoId={this.props.photo.id}/>
+              <CommentFormContainer requestPhoto={this.props.requestPhoto} currentUser={this.props.currentUser} comments={this.props.photo.comments} photoId={this.props.photo.id}/>
             </div>
           </div>
-            <div className="photo-detail-comments">
+            <div className="photo-detail-tags">
+              <TagFormContainer requestPhoto={this.props.requestPhoto} tags={this.props.photo.tags} photoId={this.props.photoId}/>
+              <ul>
+                {this.props.photo.tags ? this.renderTags() : ""}
+              </ul>
             </div>
           </div>
         </div>

@@ -19,4 +19,8 @@ class Photo < ApplicationRecord
   # belongs_to :album
   has_many :comments, dependent: :destroy
   has_many :taggings, dependent: :destroy
+
+  has_many :tags,
+  through: :taggings,
+  source: :tag
 end

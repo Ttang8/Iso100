@@ -12,4 +12,4 @@ user1 = User.create(username: 'GuestAccount', password: 'password')
 
 Photo.destroy_all
 
-photo1 = Photo.create(title: 'Nature', description: 'Green Trees', image_url: 'http://res.cloudinary.com/iso100app/image/upload/v1500572914/nature-river-wood-tree-82277_je84n8.jpg', user_id: user1.id)
+photo1 = Photo.create(title: 'Lens', description: 'Focus', image_url: 'http://res.cloudinary.com/iso100app/image/upload/v1501110884/background_il73yx.jpg', user_id: user1.id)

@@ -15,4 +15,16 @@ class Comment < ApplicationRecord
 
   belongs_to :user
   belongs_to :photo
+
+  def time
+    seconds = (Time.now.utc - self.created_at).floor
+    minutes = (seconds/60).floor
+    hours = (minutes/60).floor
+    days = (hours/24).floor
+
+    
+
+    return "#{days}d #{hours % 24}h #{minutes % 60 }m #{seconds % 60}s ago"
+  end
+
 end

@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import merge from 'lodash/merge';
 import { Link } from 'react-router-dom';
+import Masonry from 'react-masonry-component';
+
+const masonryOptions = {
+  stagger: 100,
+  gutter: 3,
+  transitionDuration: '0.5s'
+};
+
 
 class CommentForm extends Component {
   constructor(props) {
@@ -15,30 +23,14 @@ class CommentForm extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(event){
-    event.preventDefault();
-    let comment = this.state;
-    let dupOfState = this.state.comments;
-    let newComments = dupOfState.concat(comment);
-    this.props.createComment({comment})
-    .then(()=> this.setState({comments: newComments}))
-    .then(()=> this.setState({body: ""}))
-    .then(()=> this.props.clearErrors());
   }
 
   handleSubmit(event) {
-    if(event.key === 'Enter'){
       let comment = this.state;
-      let dupOfState = this.state.comments;
-      let newComments = dupOfState.concat(comment);
       this.props.createComment({comment})
-      .then(()=> this.setState({comments: newComments}))
+      .then(()=>this.props.requestPhoto(this.props.photoId))
       .then(()=> this.setState({body: ""}))
       .then(()=> this.props.clearErrors());
-    }
   }
 
   update(field){
@@ -46,9 +38,9 @@ class CommentForm extends Component {
   }
 
   renderComments() {
-    let commentList = this.state.comments.map((comment)=>{
+    let commentList = this.props.comments.map((comment)=>{
       return(
-        <li className="comment-chunk"key={comment.id}>
+        <li className="comment-chunk" key={comment.id}>
           <div>
             <Link className="username-blue" to={`/userpage/${comment.user_id}`}>
               {comment.author}
@@ -56,6 +48,9 @@ class CommentForm extends Component {
           </div>
           <div>
             {comment.body}
+          </div>
+          <div>
+            {comment.time}
           </div>
         </li>
       );
@@ -79,17 +74,19 @@ class CommentForm extends Component {
   render(){
     return(
       <div className="comments-container">
-        <ul>
+        <form className="comment-input-form" onSubmit={this.handleSubmit}>
+          <div className="comment-form">
+          </div>
+          <input className="text-area-comment" placeholder="Add a Comment" type="text" value={this.state.body} onChange={this.update('body')}>
+          </input>
+          <input className="login-button modal-button" type="submit" value="Add"></input>
+        </form>
+        <Masonry
+          className={'masonry-user-page'}
+          elementType={'ul'}
+          options={masonryOptions}>
           {this.renderComments()}
-        </ul>
-        <div className="comment-form">
-          {this.renderErrors()}
-          <form className="comment-input-form">
-            <input className="text-area-comment" onKeyPress={this.handleSubmit} placeholder="Add a Comment" type="text" value={this.state.body} onChange={this.update('body')}>
-            </input>
-            <input onClick={this.handleClick} className="login-button modal-button" type="submit" value="Add"></input>
-          </form>
-        </div>
+        </Masonry>
       </div>
 
     );

@@ -10,7 +10,7 @@ class Api::PhotosController < ApplicationController
     if @photo.save
       render "api/photos/show"
     else
-      render json: @photo.errors.full_messages, status: 400
+      render json: @photo.errors.full_messages, status: 422
     end
   end
 
@@ -19,7 +19,7 @@ class Api::PhotosController < ApplicationController
     if @photo.update_attributes(photo_params)
       render "api/photos/show"
     else
-      render json: @photo.errors.full_messages, status: 400
+      render json: @photo.errors.full_messages, status: 422
     end
   end
 

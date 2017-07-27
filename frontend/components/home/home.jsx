@@ -5,7 +5,7 @@ import Masonry from 'react-masonry-component';
 const masonryOptions = {
   fitWidth: true,
   stagger: 100,
-  transitionDuration: '0.8s'
+  transitionDuration: '0.5s'
 };
 
 class Home extends Component {
