@@ -55,7 +55,6 @@ class UserPage extends Component {
   handlePhotos() {
     const photoList = this.props.userPhotos.map((photo) => (
       <li key={photo.id} className="user-page-photos">
-        <Link to={`/photos/${photo.id}`} >
           <div className="relative_pos">
             <div className="user-page-title-username">
               <Link to={`/photos/${photo.id}`} >
@@ -66,7 +65,6 @@ class UserPage extends Component {
             </div>
               <img className="group user-page-image" src={photo.image_url}></img>
           </div>
-        </Link>
       </li>
     ));
 

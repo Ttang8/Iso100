@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, matchPath } from 'react-router-dom';
-import Modal from 'react-modal';
 import HomeContainer from '../home/home_container';
 import UserPageContainer from '../user_page/user_page_container';
 
@@ -13,15 +12,11 @@ class PhotoUploadForm extends Component {
       description: "",
       image_url: "",
       thumbnail_url: "",
-      modalIsOpen: true
-    };
 
-    this.props.clearErrors();
+    };
+    
     this.handleUpload = this.handleUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
   }
 
   renderErrors(){
@@ -52,62 +47,43 @@ class PhotoUploadForm extends Component {
     event.preventDefault();
     const photo = this.state;
     this.props.createPhoto({photo})
-    .then(()=>this.props.history.push(`/userpage/${this.props.session.currentUser.id}`))
-    .then(()=>window.location.reload());
+    .then(()=> this.props.closeModal());
   }
 
   update(field){
     return event => this.setState({[field]: event.target.value});
   }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  closeModal() {
-    this.setState({modalIsOpen: false});
-    this.props.clearErrors();
-    this.props.history.push(`/userpage/${this.props.session.currentUser.id}`);
-    window.location.reload();
-  }
-
   render () {
     return (
       <div>
-        <HomeContainer />
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          shouldCloseOnOverlayClick={false}
-          contentLabel="UploadFormModal"
-          className="session-modal"
-        >
-        <div className="errors">
-          {this.renderErrors()}
-        </div>
-
-        <form className="upload-photo-form" onSubmit={this.handleSubmit}>
-          <div className="upload-photo-button">
-            <button className="gray-fade" onClick={this.handleUpload}>
-              <i className="fa fa-cloud-upload" aria-hidden="true"></i>
-              &nbsp;Upload Image
-            </button>
-            <img className="thumbnail-image"src={this.state.thumbnail_url}></img>
+        <div>
+          <div className="errors">
+            {this.renderErrors()}
           </div>
 
-          <div className="inputs">
-            <input placeholder="Title - required" type="text" value={this.state.title} onChange={this.update('title')}></input>
+          <form className="upload-photo-form" onSubmit={this.handleSubmit}>
+            <div className="upload-photo-button">
+              <button className="gray-fade" onClick={this.handleUpload}>
+                <i className="fa fa-cloud-upload" aria-hidden="true"></i>
+                &nbsp;Upload Image
+              </button>
+              <img className="thumbnail-image"src={this.state.thumbnail_url}></img>
+            </div>
+
+            <div className="inputs">
+              <input placeholder="Title - required" type="text" value={this.state.title} onChange={this.update('title')}></input>
+            </div>
+            <div className="inputs">
+              <textarea placeholder="Description" type="text" value={this.state.description} onChange={this.update('description')}>
+              </textarea>
+            </div>
+            <input className="login-button modal-button" type="submit" value="Submit"></input>
+          </form>
+          <div className="close-button" >
+            <button onClick={this.props.closeModal}>Close</button>
           </div>
-          <div className="inputs">
-            <textarea placeholder="Description" type="text" value={this.state.description} onChange={this.update('description')}>
-            </textarea>
-          </div>
-          <input className="login-button modal-button" type="submit" value="Submit"></input>
-        </form>
-        <div className="close-button" >
-          <button onClick={this.closeModal}>Close</button>
         </div>
-        </Modal>
       </div>
 
     );
