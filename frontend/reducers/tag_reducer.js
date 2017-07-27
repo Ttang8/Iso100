@@ -15,7 +15,7 @@ const TagReducer = (state = {}, action) => {
       return merge({}, state, {[action.tag.id]: action.tag});
     case REMOVE_TAG:
       let dup = merge({}, state);
-      delete dup[action.tag.id];
+      delete dup[action.tag];
       return merge({}, dup);
     case RECEIVE_ERRORS:
       const errors = action.errors;

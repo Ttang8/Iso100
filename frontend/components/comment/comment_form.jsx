@@ -23,14 +23,22 @@ class CommentForm extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDeleteComment = this.handleDeleteComment.bind(this);
   }
 
   handleSubmit(event) {
-      let comment = this.state;
-      this.props.createComment({comment})
-      .then(()=>this.props.requestPhoto(this.props.photoId))
-      .then(()=> this.setState({body: ""}))
-      .then(()=> this.props.clearErrors());
+    let comment = this.state;
+    this.props.createComment({comment})
+    .then(()=>this.props.requestPhoto(this.props.photoId))
+    .then(()=> this.setState({body: ""}))
+    .then(()=> this.props.clearErrors());
+  }
+
+  handleDeleteComment(event){
+    event.preventDefault();
+    this.props.deleteComment(event.target.value)
+    .then(()=>this.props.requestPhoto(this.props.photoId))
+    .then(()=> this.props.clearErrors());
   }
 
   update(field){
@@ -38,9 +46,9 @@ class CommentForm extends Component {
   }
 
   renderComments() {
-    let commentList = this.props.comments.map((comment)=>{
+    let commentList = this.props.comments.map((comment, idx)=>{
       return(
-        <li className="comment-chunk" key={comment.id}>
+        <li className="comment-chunk" key={idx}>
           <div>
             <Link className="username-blue" to={`/userpage/${comment.user_id}`}>
               {comment.author}
@@ -51,6 +59,9 @@ class CommentForm extends Component {
           </div>
           <div>
             {comment.time}
+          </div>
+          <div>
+            <button type="button" value={comment.id} onClick={this.handleDeleteComment}>X</button>
           </div>
         </li>
       );

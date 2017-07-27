@@ -1,7 +1,7 @@
-export const destroyComment = (comment) => (
+export const destroyComment = (id) => (
   $.ajax({
     method: 'DELETE',
-    url: `/api/comments/${comment.id}`,
+    url: `/api/comments/${id}`,
   })
 );
 

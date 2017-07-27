@@ -15,7 +15,7 @@ const CommentReducer = (state = {}, action) => {
       return merge({}, state, {[action.comment.id]: action.comment});
     case REMOVE_COMMENT:
       let dup = merge({}, state);
-      delete dup[action.comment.id];
+      delete dup[action.comment];
       return merge({}, dup);
     case RECEIVE_ERRORS:
       const errors = action.errors;

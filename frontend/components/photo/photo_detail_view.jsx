@@ -17,6 +17,7 @@ class PhotoDetailView extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.toggleAddDisplay = this.toggleAddDisplay.bind(this);
     this.handleBack = this.handleBack.bind(this);
+    this.handleDeleteTag = this.handleDeleteTag.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -92,11 +93,22 @@ class PhotoDetailView extends Component {
     this.props.history.goBack();
   }
 
+  handleDeleteTag(event){
+    event.preventDefault();
+    this.props.deleteTag(event.target.value)
+    .then(this.props.requestPhoto(this.props.photoId));
+  }
+
   renderTags(){
-    let tags = this.props.photo.tags.map((tag)=>{
+    let tags = this.props.photo.tags.map((tag, idx)=>{
       return(
-        <li key={tag.id} >
-          {tag.name}
+        <li key={idx} >
+          <div>
+            {tag.name}
+          </div>
+          <div>
+            <button value={tag.id} type="button" onClick={this.handleDeleteTag}>X</button>
+          </div>
         </li>
       );
     });
@@ -117,7 +129,7 @@ class PhotoDetailView extends Component {
   }
 
   render () {
-    console.log(this.props);
+    console.log('renders');
     if (this.props.photo) {
       return (
         <div className="photo-detail-view-container">

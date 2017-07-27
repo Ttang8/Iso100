@@ -1,7 +1,7 @@
-export const destroyTag = (tag) => (
+export const destroyTag = (id) => (
   $.ajax({
     method: 'DELETE',
-    url: `/api/tags/${tag.id}`,
+    url: `/api/tags/${id}`,
   })
 );
 

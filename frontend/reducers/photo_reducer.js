@@ -13,7 +13,7 @@ const PhotoReducer = (state = {}, action) => {
     case RECEIVE_PHOTOS:
       return merge({}, action.photos);
     case RECEIVE_PHOTO:
-      return merge({}, state, {[action.photo.id]: action.photo});
+      return Object.assign({}, state, {[action.photo.id]: action.photo});
     case REMOVE_PHOTO:
       let dup = merge({}, state);
       delete dup[action.photo.id];

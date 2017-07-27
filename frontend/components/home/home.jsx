@@ -58,7 +58,7 @@ class Home extends Component {
           <br />
           <Link to="/login">Get Started</Link>
         </div>
-        <img src="http://res.cloudinary.com/iso100app/image/upload/v1500864787/background1_wiy28m.jpg"></img>
+        <img src="http://res.cloudinary.com/iso100app/image/upload/v1501178319/pexels-photo-326243_nj3zvm.jpg"></img>
       </div>
     );
   }

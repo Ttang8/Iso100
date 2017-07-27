@@ -7,9 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Photo.destroy_all
+Comment.destroy_all
+Tag.destroy_all
 
 user1 = User.create(username: 'GuestAccount', password: 'password')
 
-Photo.destroy_all
 
 photo1 = Photo.create(title: 'Lens', description: 'Focus', image_url: 'http://res.cloudinary.com/iso100app/image/upload/v1501110884/background_il73yx.jpg', user_id: user1.id)
