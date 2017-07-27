@@ -4,6 +4,7 @@ import Masonry from 'react-masonry-component';
 import PhotoUploadFormContainer from '../photo/photo_upload_form_container';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import AlbumFormContainer from '../album/album_form_container';
+import Modal from 'react-modal';
 
 const masonryOptions = {
   fitWidth: true,
@@ -27,6 +28,19 @@ class UserPage extends Component {
     this.toggleAlbums = this.toggleAlbums.bind(this);
     this.handleAlbumModal = this.handleAlbumModal.bind(this);
     this.toggleAlbumIndex = this.toggleAlbumIndex.bind(this);
+
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({openAlbumModal: true});
+  }
+
+  closeModal() {
+    this.setState({openAlbumModal: false});
+    this.props.clearErrors();
   }
 
   componentDidMount () {
@@ -179,7 +193,15 @@ class UserPage extends Component {
               {this.state.displayAlbums ? this.handleAlbums() : ""}
               {this.state.displayAlbumIndex ? this.handleAlbumsIndex() : ""}
           </div>
-          {this.state.openAlbumModal ? <AlbumFormContainer /> : ""}
+          <Modal
+            isOpen={this.state.openAlbumModal}
+            onRequestClose={this.closeModal}
+            shouldCloseOnOverlayClick={false}
+            contentLabel="UploadFormModal"
+            className="session-modal"
+          >
+            <AlbumFormContainer closeModal={this.closeModal}/>
+          </Modal>
         </div>
     );
   }
