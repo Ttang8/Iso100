@@ -36,7 +36,7 @@ class CommentForm extends Component {
 
   handleDeleteComment(event){
     event.preventDefault();
-    this.props.deleteComment(event.target.value)
+    this.props.deleteComment(event.currentTarget.value)
     .then(()=>this.props.requestPhoto(this.props.photoId))
     .then(()=> this.props.clearErrors());
   }
@@ -45,23 +45,26 @@ class CommentForm extends Component {
     return event => this.setState({[field]: event.target.value});
   }
 
+
   renderComments() {
     let commentList = this.props.comments.map((comment, idx)=>{
       return(
         <li className="comment-chunk" key={idx}>
-          <div>
-            <Link className="username-blue" to={`/userpage/${comment.user_id}`}>
-              {comment.author}
-            </Link>
+          <div className="comment-date">
+            <div className="comment-body">
+              <Link className="username-blue" to={`/userpage/${comment.user_id}`}>
+                {comment.author}
+              </Link>
+              {comment.body}
+            </div>
+            <div>
+              {comment.time}
+            </div>
           </div>
-          <div>
-            {comment.body}
-          </div>
-          <div>
-            {comment.time}
-          </div>
-          <div>
-            <button type="button" value={comment.id} onClick={this.handleDeleteComment}>X</button>
+          <div className="comment-delete-button">
+            {comment.user_id === this.props.currentUser.id ? <button type="button" className="expanding-button" value={comment.id} onClick={this.handleDeleteComment}>
+            <i className="fa fa-times" aria-hidden="true"></i>
+            </button> : ""}
           </div>
         </li>
       );
@@ -85,19 +88,20 @@ class CommentForm extends Component {
   render(){
     return(
       <div className="comments-container">
-        <form className="comment-input-form" onSubmit={this.handleSubmit}>
-          <div className="comment-form">
-          </div>
-          <input className="text-area-comment" placeholder="Add a Comment" type="text" value={this.state.body} onChange={this.update('body')}>
-          </input>
-          <input className="login-button modal-button" type="submit" value="Add"></input>
-        </form>
         <Masonry
           className={'masonry-user-page'}
           elementType={'ul'}
           options={masonryOptions}>
           {this.renderComments()}
         </Masonry>
+        <form className="comment-input-form" onSubmit={this.handleSubmit}>
+          {this.renderErrors()}
+          <div className="comment-form">
+          </div>
+          <input className="login-button comment-button" type="submit" value="Add Comment"></input>
+          <input className="text-area-comment" placeholder="Add a Comment" type="text" value={this.state.body} onChange={this.update('body')}>
+          </input>
+        </form>
       </div>
 
     );

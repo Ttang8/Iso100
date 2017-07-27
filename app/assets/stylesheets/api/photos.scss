@@ -6,10 +6,12 @@
   max-width: 480px;
   max-height: 500px;
   margin: 4%;
+  transition: all .5s;
 }
 
 .main-page-photos:hover {
   -webkit-box-shadow: 8px 8px 30px lightgray;
+  margin: 3%;
 }
 
 
@@ -52,16 +54,18 @@
 }
 
 .photo-edit-and-delete button {
-  min-width: 100px;
+  min-width: 94px;
   margin: 10px;
   background-color: white;
   justify-content: center;
   padding: 7px;
   align-items: center;
   border-radius: 10px;
+  text-align: center;
 }
 
 .photo-edit-and-delete button:hover {
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -106,7 +110,6 @@
 }
 
 .photo-detail-tags, .photo-detail-user-information {
-  border: 1px solid black;
   width: 450px;
   height: auto;
 }
@@ -120,4 +123,13 @@
 .photo-detail-description {
   font-size: 16px;
   border-bottom: 1px solid black;
+}
+
+.selected-album {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  margin-top: 5px;
 }

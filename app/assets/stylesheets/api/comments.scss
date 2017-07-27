@@ -23,18 +23,71 @@
 }
 
 .comment-chunk {
-  border: 1px solid black;
+  border: 1px solid lightgray;
   padding-top: 20px;
   padding-bottom: 20px;
   width: 100%;
-  display: block;
+  display: flex;
+  border-radius: 10px;
+  padding-left: 11px;
+  font-size: 15px;
+  justify-content: space-between;
+}
+
+.comment-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-container {
+  margin-top: 10px;
+}
+
+.comment-date {
+  display: flex;
+}
+
+.comment-date div {
+  margin-right: 10px;
+}
+
+.comment-delete-button {
+  margin-right: 20px;
 }
 
 .comment-input-form {
-  border: 1px solid black;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 102%;
+  font-size: 14px;
+}
+
+.expanding-button:hover {
+  border: 1px solid lightgray;
+  width: 15px;
+  box-shadow: 1px 1px 1px lightgray;
+  text-align: center;
+}
+
+.comment-button {
+  position: absolute;
+  margin: 346px;
+  margin-top: 75px;
 }
 
 .text-area-comment {
   padding-top: 10px;
   padding-bottom: 90px;
+}
+
+.tag-button {
+
+}
+
+.tag-form {
+  
 }

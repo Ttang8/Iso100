@@ -79,12 +79,13 @@ class PhotoDetailView extends Component {
       <div className="photo-edit-and-delete">
         <form onSubmit={this.handleSubmit} className="add-album-form">
           <select className="albums-select" value={this.state.album_id} onChange={this.handleChange} >
-            <option>--Select Album--</option>
+            <option disabled selected>--Select Album--</option>
             {this.userAlbums()}
+            <option value={null}>none</option>
           </select>
           <button type="submit" onClick={this.toggleAddDisplay} value="Submit">{this.state.buttonDisplay}</button>
         </form>
-        <button onClick={this.handleDelete}>Delete Photo</button>
+        <button className="delete-button" onClick={this.handleDelete}>Delete Photo</button>
       </div>
     );
   }
@@ -95,19 +96,21 @@ class PhotoDetailView extends Component {
 
   handleDeleteTag(event){
     event.preventDefault();
-    this.props.deleteTag(event.target.value)
+    this.props.deleteTag(event.currentTarget.value)
     .then(this.props.requestPhoto(this.props.photoId));
   }
 
   renderTags(){
     let tags = this.props.photo.tags.map((tag, idx)=>{
       return(
-        <li key={idx} >
+        <li key={idx} className="tags-li">
           <div>
-            {tag.name}
+            {tag.name}&nbsp;
           </div>
           <div>
-            <button value={tag.id} type="button" onClick={this.handleDeleteTag}>X</button>
+            {this.props.photo.user_id === this.props.currentUser.id ? <button value={tag.id} type="button" onClick={this.handleDeleteTag}>
+              <i className="fa fa-times" aria-hidden="true"></i>
+            </button> : ""}
           </div>
         </li>
       );
@@ -129,7 +132,6 @@ class PhotoDetailView extends Component {
   }
 
   render () {
-    console.log('renders');
     if (this.props.photo) {
       return (
         <div className="photo-detail-view-container">
@@ -142,12 +144,15 @@ class PhotoDetailView extends Component {
             </div>
             {this.props.photo.user_id === this.props.currentUser.id ? this.displayEdits() : ""}
             <img className="group" src={this.props.photo.image_url}></img>
-            <div>Selected Album
-              {this.displayAlbumName()}
+            <div className="selected-album">Selected Album
+              <p>{this.displayAlbumName()}</p>
             </div>
           </div>
           <div>
-            {this.renderErrors()}
+            <ul className="photo-tags">
+              <li className="tags-title">Tags: </li>
+              {this.props.photo.tags ? this.renderTags() : ""}
+            </ul>
           </div>
           <div className="photo-detail-container">
             <div className="photo-detail-user-information">
@@ -162,15 +167,11 @@ class PhotoDetailView extends Component {
               {this.props.photo.description}
             </div>
             <div className="comment-form-container">
-              <label>Comments:</label>
               <CommentFormContainer requestPhoto={this.props.requestPhoto} currentUser={this.props.currentUser} comments={this.props.photo.comments} photoId={this.props.photo.id}/>
             </div>
           </div>
             <div className="photo-detail-tags">
-              <TagFormContainer requestPhoto={this.props.requestPhoto} tags={this.props.photo.tags} photoId={this.props.photoId}/>
-              <ul>
-                {this.props.photo.tags ? this.renderTags() : ""}
-              </ul>
+              {this.props.photo.user_id === this.props.currentUser.id ? <TagFormContainer requestPhoto={this.props.requestPhoto} tags={this.props.photo.tags} photoId={this.props.photoId}/> : ""}
             </div>
           </div>
         </div>

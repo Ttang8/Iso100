@@ -52,10 +52,11 @@ class TagForm extends Component {
   render() {
     return(
     <div>
-      <form onSubmit={this.handleSubmit}>
+      {this.renderErrors()}
+      <form className="comment-input-form tag-form" onSubmit={this.handleSubmit}>
         <input className="text-area-comment" placeholder="Add a Tag" type="text" value={this.state.name} onChange={this.update('name')}>
         </input>
-        <input className="login-button modal-button" type="submit" value="Add"></input>
+        <input className="comment-button login-button tag-button" type="submit" value="Add Tag"></input>
       </form>
     </div>
   );

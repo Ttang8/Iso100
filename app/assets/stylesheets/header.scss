@@ -13,7 +13,7 @@ header {
   justify-content: space-between;
   align-items: center;
   font-size: 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid lightgray;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -67,4 +67,10 @@ header {
 
 h1 {
   font-size: 35px;
+}
+
+.search-and-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

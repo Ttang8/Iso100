@@ -21,19 +21,21 @@ class NavBar extends Component {
   }
 
   handleSubmit(){
-
+    return(
+      <form onSubmit={this.handleSubmit}>
+        <input className="search-bar" type="text" placeholder="search by tags" value={this.state.query} onChange={this.handleChange}></input>
+        <input type="submit" value="Search"></input>
+      </form>
+    );
   }
 
   createLink () {
     if (this.props.currentUser) {
       return (
         <div className="search-and-upload">
-          <form onSubmit={this.handleSubmit}>
-            <input className="search-bar" type="text" placeholder="search by tags" value={this.state.query} onChange={this.handleChange}></input>
-            <input type="submit" value="Search"></input>
-          </form>
           <Link to={`/photo-upload/${this.props.currentUser.id}/`}>
             <i className="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>
+            &nbsp;&nbsp;&nbsp;Upload
           </Link>
         </div>
       );
