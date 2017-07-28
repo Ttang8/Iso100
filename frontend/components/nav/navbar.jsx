@@ -12,28 +12,8 @@ class NavBar extends Component {
       query: "",
     };
 
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
     this.handleLogoClick = this.handleLogoClick.bind(this);
   }
-
-  // handleChange(event){
-  //   event.preventDefault();
-  //   this.setState({query: event.target.value});
-  // }
-  //
-  // handleSubmit(){
-  //   return(
-  //     <form onSubmit={this.handleSubmit}>
-  //       <input className="search-bar" type="text" placeholder="search by tags" value={this.state.query} onChange={this.handleChange}></input>
-  //       <input type="submit" value="Search"></input>
-  //     </form>
-  //   );
-  // }
-
-
-
-
 
   handleLogoClick() {
     if (this.props.history.location.pathname === '/') {
