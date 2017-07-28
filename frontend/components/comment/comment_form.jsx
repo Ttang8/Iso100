@@ -27,6 +27,7 @@ class CommentForm extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     let comment = this.state;
     this.props.createComment({comment})
     .then(()=>this.props.requestPhoto(this.props.photoId))
@@ -55,11 +56,11 @@ class CommentForm extends Component {
               <Link className="username-blue" to={`/userpage/${comment.user_id}`}>
                 {comment.author}
               </Link>
-              {comment.body}
+              <div>
+                {comment.time}
+              </div>
             </div>
-            <div>
-              {comment.time}
-            </div>
+            {comment.body}
           </div>
           <div className="comment-delete-button">
             {comment.user_id === this.props.currentUser.id ? <button type="button" className="expanding-button" value={comment.id} onClick={this.handleDeleteComment}>

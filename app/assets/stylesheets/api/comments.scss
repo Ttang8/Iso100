@@ -11,6 +11,7 @@
 
 .username-blue {
   color: rgb(44, 111, 167);
+  margin-right: 10px;
 }
 
 .username-blue:hover {
@@ -36,7 +37,6 @@
 
 .comment-body {
   display: flex;
-  flex-direction: column;
 }
 
 .comments-container {
@@ -45,6 +45,7 @@
 
 .comment-date {
   display: flex;
+  flex-direction: column;
 }
 
 .comment-date div {
@@ -85,9 +86,11 @@
 }
 
 .tag-button {
-
+  margin: 61%;
+  margin-top: 5%;
 }
 
 .tag-form {
-  
+  height: 50px;
+  width: 200px;
 }

@@ -4,6 +4,7 @@ import { ProtectedRoute } from '../../util/route_util';
 import NavContainer from './nav_container';
 import PhotoUploadFormContainer from '../photo/photo_upload_form_container';
 import Modal from 'react-modal';
+import { withRouter } from 'react-router';
 
 class NavBar extends Component {
   constructor (props) {
@@ -16,6 +17,7 @@ class NavBar extends Component {
 
     // this.handleSubmit = this.handleSubmit.bind(this);
     // this.handleChange = this.handleChange.bind(this);
+    this.handleLogoClick = this.handleLogoClick.bind(this);
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -59,17 +61,25 @@ class NavBar extends Component {
     }
   }
 
+  handleLogoClick() {
+    if (this.props.history.location.pathname === '/') {
+      window.location.reload();
+    } else {
+      this.props.history.push('/');
+    }
+  }
+
 
   render(){
     return (
       <header>
         <div className="logo-and-pic-container">
-          <Link to="/">
+          <button onClick={this.handleLogoClick}>
             <div className="logo-pic">
               <img src="http://res.cloudinary.com/iso100app/image/upload/v1500862281/black_camera_q12rnt.png"></img>
             </div>
-          </Link>
-          <Link to="/">
+          </button>
+          <button onClick={this.handleLogoClick}>
             <div className="sitename-container">
               <h1 className="sitename">
                 ISO
@@ -78,7 +88,7 @@ class NavBar extends Component {
                 100
               </h2>
             </div>
-          </Link>
+          </button>
         </div>
         {this.createLink()}
         <NavContainer />
@@ -96,4 +106,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

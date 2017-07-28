@@ -20,7 +20,7 @@ class Home extends Component {
   homePage () {
     if (this.props.photos[0]) {
       const photoList = this.props.photos.map((photo) => (
-        <li key={photo.id} className="main-page-photos">
+        <li key={photo.id + "photos"} className="main-page-photos">
           <div className="homepage-photo-title">
             <Link className="homepage-photo-user" to={`/userpage/${photo.user_id}`} >
               {photo.username}
@@ -46,7 +46,7 @@ class Home extends Component {
       );
     } else {
       return (
-        <div>Fetching Pictures</div>
+        <div className="fetching-pictures"></div>
       );
     }
   }

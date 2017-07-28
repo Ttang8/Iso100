@@ -28,6 +28,7 @@ class UserPage extends Component {
     this.toggleAlbums = this.toggleAlbums.bind(this);
     this.handleAlbumModal = this.handleAlbumModal.bind(this);
     this.toggleAlbumIndex = this.toggleAlbumIndex.bind(this);
+    this.handlePicClick = this.handlePicClick.bind(this);
 
 
     this.openModal = this.openModal.bind(this);
@@ -55,6 +56,7 @@ class UserPage extends Component {
   handlePhotos() {
     const photoList = this.props.userPhotos.map((photo) => (
       <li key={photo.id} className="user-page-photos">
+        <button value={photo.id} onClick={this.handlePicClick}>
           <div className="relative_pos">
             <div className="user-page-title-username">
               <Link to={`/photos/${photo.id}`} >
@@ -63,8 +65,9 @@ class UserPage extends Component {
                 by&nbsp;{photo.username}
               </Link>
             </div>
-              <img className="group user-page-image" src={photo.image_url}></img>
+            <img className="group user-page-image" src={photo.image_url}></img>
           </div>
+        </button>
       </li>
     ));
 
@@ -136,6 +139,11 @@ class UserPage extends Component {
     this.setState({displayPhotos: false, displayAlbumIndex: false, displayAlbums: true, openAlbumModal: false});
   }
 
+  handlePicClick(event) {
+    event.preventDefault();
+    this.props.history.push(`/photos/${event.currentTarget.value}`);
+  }
+
   handleAlbumsIndex(){
     let dup = Object.assign({}, this.state);
     let choosenAlbum;
@@ -147,7 +155,7 @@ class UserPage extends Component {
     let albumPhotos = choosenAlbum.photos.map((photo)=>{
       return (
         <li key={photo.id} className="user-page-photos">
-          <Link to={`/photos/${photo.id}`} >
+          <button value={photo.id} onClick={this.handlePicClick}>
             <div className="relative_pos">
               <div className="user-page-title-username">
                 <Link to={`/photos/${photo.id}`} >
@@ -158,7 +166,7 @@ class UserPage extends Component {
               </div>
                 <img className="group user-page-image" src={photo.image_url}></img>
             </div>
-          </Link>
+          </button>
         </li>
       );
     });

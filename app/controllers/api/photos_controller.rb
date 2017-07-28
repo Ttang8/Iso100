@@ -26,6 +26,7 @@ class Api::PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
+    render "api/photos/show"
   end
 
   def index

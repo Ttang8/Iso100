@@ -79,7 +79,7 @@ class PhotoDetailView extends Component {
       <div className="photo-edit-and-delete">
         <form onSubmit={this.handleSubmit} className="add-album-form">
           <select className="albums-select" value={this.state.album_id} onChange={this.handleChange} >
-            <option disabled selected>--Select Album--</option>
+            <option disabled >--Select Album--</option>
             {this.userAlbums()}
             <option value={null}>none</option>
           </select>
@@ -178,7 +178,7 @@ class PhotoDetailView extends Component {
       );
     } else {
     return (
-      <div>Fetching image</div>
+      <div></div>
     );
   }
   }
