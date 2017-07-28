@@ -31,3 +31,8 @@ export const selectUserAlbums = (albums, userId) => {
 
   return newArr;
 };
+
+export const selectAllTags = (tags) => {
+  let arr = Object.keys(tags).map((id) => (tags[id]));
+  return arr;
+};

@@ -34,3 +34,11 @@ export const createPhoto = photo => (
     data: photo
   })
 );
+
+export const requestPhotosByTag = tagId => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/photos',
+    data: {tag_id: tagId}
+  })
+);

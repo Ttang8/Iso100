@@ -17,11 +17,12 @@ class Home extends Component {
     super(props);
 
     this.state = {
+      load_spinner: true
     };
   }
 
   componentDidMount () {
-    setTimeout(() => this.setState({display: 'none'}), 4000);
+    setTimeout(() => this.setState({load_spinner: false}), 2000);
     this.props.requestPhotos();
   }
 
@@ -73,6 +74,8 @@ class Home extends Component {
 
   render () {
     if (this.props.loggedIn) {
+      if (this.state.load_spinner) {
+
         return (
           <div>
             <div className="sk-cube-grid" style={this.state}>
@@ -86,9 +89,15 @@ class Home extends Component {
               <div className="sk-cube sk-cube8"></div>
               <div className="sk-cube sk-cube9"></div>
             </div>
+          </div>
+        );
+      } else {
+        return (
+          <div>
             {this.homePage()}
           </div>
         );
+      }
     } else {
       return this.splashPage();
     }

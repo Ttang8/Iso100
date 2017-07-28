@@ -30,7 +30,12 @@ class Api::PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.all
+    if params[:tag_id]
+      tag = Tag.find(params[:tag_id])
+      @photos = tag.photos
+    else
+      @photos = Photo.all
+    end
   end
 
   def photo_params

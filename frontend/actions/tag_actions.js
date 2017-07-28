@@ -57,8 +57,8 @@ export const deleteTagging = tagging => dispatch => (
   APIUtil.destroyTagging(tagging).then(tagging => dispatch(removeTag(tagging)))
 );
 
-export const requestTag = tag => dispatch => (
-  APIUtil.requestTag(tag).then(tag => dispatch(receiveTag(tag)))
+export const requestTag = tagId => dispatch => (
+  APIUtil.requestTag(tagId).then(tag => dispatch(receiveTag(tag)))
 );
 
 export const requestTags = () => (dispatch) => (

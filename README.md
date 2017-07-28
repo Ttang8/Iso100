@@ -90,7 +90,7 @@ Users are able to click on any photo and be brought to a photo show page. Here u
 
 ![comments: comments][comments]
 
-### Tags
+### Tags & Searching
 
 Users can add custom tags to their photos in the photo show page which allows a others to easily search for similar photos with a click of a button.
 

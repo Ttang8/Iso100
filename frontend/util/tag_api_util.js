@@ -27,3 +27,10 @@ export const destroyTagging = tagging => (
     url: `/api/taggings/${tagging.id}`,
   })
 );
+
+export const requestTag = tagId => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/tags/${tagId}`
+  })
+);

@@ -8,6 +8,7 @@ import FootBar from './footer_bar/footer_bar';
 import PhotoDetailViewContainer from './photo/photo_detail_view_container';
 import UserPageContainer from './user_page/user_page_container';
 import PhotoUploadFormContainer from './photo/photo_upload_form_container';
+import SearchTagIndexContainer from './search_tag/search_tag_index_container';
 
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
     <ProtectedRoute path="/photos/:photoId" component={PhotoDetailViewContainer} />
     <ProtectedRoute path="/photo-upload/:userId/" component={PhotoUploadFormContainer} />
     <ProtectedRoute path="/userpage/:userId" component={UserPageContainer} />
+    <ProtectedRoute path="/search/:tagId" component={SearchTagIndexContainer} />
 
     <AuthRoute path="/login" component={SessionFormContainer}/>
     <AuthRoute path="/signup" component={SessionFormContainer}/>

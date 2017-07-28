@@ -105,7 +105,9 @@ class PhotoDetailView extends Component {
       return(
         <li key={idx} className="tags-li">
           <div>
-            {tag.name}&nbsp;
+            <Link to={`/search/${tag.id}`}>
+              {tag.name}&nbsp;
+            </Link>
           </div>
           <div>
             {this.props.photo.user_id === this.props.currentUser.id ? <button value={tag.id} type="button" onClick={this.handleDeleteTag}>

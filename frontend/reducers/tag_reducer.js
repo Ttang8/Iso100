@@ -12,7 +12,7 @@ const TagReducer = (state = {}, action) => {
     case RECEIVE_TAGS:
       return merge({}, action.tags);
     case RECEIVE_TAG:
-      return merge({}, state, {[action.tag.id]: action.tag});
+      return merge({}, state, {[action.tag]: action.tag});
     case REMOVE_TAG:
       let dup = merge({}, state);
       delete dup[action.tag];

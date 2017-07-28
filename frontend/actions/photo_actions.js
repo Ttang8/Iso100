@@ -57,3 +57,9 @@ export const updatePhoto = photo => dispatch => (
     dispatch(receiveErrors(errors.responseJSON))
   ))
 );
+
+export const requestPhotosByTag = tagId => dispatch => (
+  APIUtil.requestPhotosByTag(tagId).then(photos => (
+    dispatch(receivePhotos(photos))
+  ))
+);
