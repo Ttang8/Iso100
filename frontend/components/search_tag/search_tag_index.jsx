@@ -24,7 +24,7 @@ class SearchTagIndex extends Component {
 
   renderPhotos(){
     const photoList = this.props.photos.map((photo, idx) => (
-      <li key={photo.id} className="user-page-photos">
+      <li key={idx} className="user-page-photos">
         <button value={photo.id} onClick={this.handlePicClick}>
           <div className="relative_pos">
             <div className="user-page-title-username">
