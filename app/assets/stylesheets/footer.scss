@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1rem;
+  padding: 5px;
   background-color: #efefef;
   text-align: center;
   opacity: .8;
@@ -14,4 +14,8 @@
 .footer-icons {
   display: flex;
   justify-content: space-around;
+}
+
+.footer-icons li {
+  margin-right: 10px;
 }

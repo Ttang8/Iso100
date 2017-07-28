@@ -17,11 +17,24 @@ class Nav extends React.Component{
   }
 
   handleUsernameClick() {
-    console.log(this.props);
     if (this.props.history.location.pathname === `/userpage/${this.props.currentUser.id}`) {
       window.location.reload();
     } else {
       this.props.history.push(`/userpage/${this.props.currentUser.id}`);
+    }
+  }
+
+  createLink () {
+    if (this.props.currentUser) {
+      return (
+        <div className="search-and-upload">
+          <button onClick={this.openModal}>
+            <i className="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </button>
+        </div>
+      );
+    } else {
+      return "";
     }
   }
 
@@ -30,14 +43,19 @@ class Nav extends React.Component{
       let username = this.props.currentUser.username;
       username = username[0].toLocaleUpperCase() + username.slice(1);
       return(
-        <div className="welcome-user">Welcome&nbsp;
-          <button className="only-fade-gray" onClick={this.handleUsernameClick} >
-            <h2>{username}</h2>
-          </button>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button className="login-button" onClick={this.handleLogout}>
-            <i className="fa fa-sign-out" aria-hidden="true"></i>&nbsp;
-            Logout</button>
+        <div className="upload-link">
+          <div >
+            {this.createLink()}
+          </div>
+          <div className="welcome-user">
+            <button className="only-fade-gray" onClick={this.handleUsernameClick} >
+              <h2>{username}</h2>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button className="login-button" onClick={this.handleLogout}>
+              <i className="fa fa-sign-out" aria-hidden="true"></i>&nbsp;
+                Logout</button>
+            </div>
         </div>
       );
     } else {

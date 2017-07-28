@@ -35,9 +35,10 @@ class PhotoUploadForm extends Component {
     event.preventDefault();
     cloudinary.openUploadWidget(
       window.CLOUDINARY_OPTIONS, (errors, image) => {
+        console.log(image);
         if (errors) {
         } else {
-          this.setState({image_url: image[0].secure_url});
+          this.setState({image_url: image[0].secure_url, thumbnail_url: image[0].thumbnail_url});
         }
       }
     );

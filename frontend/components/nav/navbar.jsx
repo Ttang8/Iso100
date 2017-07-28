@@ -46,20 +46,7 @@ class NavBar extends Component {
     this.props.clearErrors();
   }
 
-  createLink () {
-    if (this.props.currentUser) {
-      return (
-        <div className="search-and-upload">
-          <button onClick={this.openModal}>
-            <i className="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>
-            &nbsp;&nbsp;&nbsp;Upload
-          </button>
-        </div>
-      );
-    } else {
-      return "";
-    }
-  }
+
 
   handleLogoClick() {
     if (this.props.history.location.pathname === '/') {
@@ -90,7 +77,6 @@ class NavBar extends Component {
             </div>
           </button>
         </div>
-        {this.createLink()}
         <NavContainer />
         <Modal
           isOpen={this.state.modalIsOpen}
