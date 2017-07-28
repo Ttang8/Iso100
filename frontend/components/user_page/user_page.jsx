@@ -21,7 +21,7 @@ class UserPage extends Component {
       displayAlbums: false,
       openAlbumModal: false,
       displayAlbumIndex: false,
-      choosenAlbumId: ""
+      choosenAlbumId: "",
     };
 
     this.togglePhotos = this.togglePhotos.bind(this);
@@ -174,6 +174,7 @@ class UserPage extends Component {
     return(
       <div className="choosenAlbum-title">
         {choosenAlbum.title}
+        <br />
         <Masonry
           className={'masonry-user-page'}
           elementType={'ul'}

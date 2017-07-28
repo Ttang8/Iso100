@@ -50,7 +50,7 @@ class NavBar extends Component {
         <div className="logo-and-pic-container">
           <button onClick={this.handleLogoClick}>
             <div className="logo-pic">
-              <img src="http://res.cloudinary.com/iso100app/image/upload/v1500862281/black_camera_q12rnt.png"></img>
+              <img src="https://res.cloudinary.com/iso100app/image/upload/v1500862281/black_camera_q12rnt.png"></img>
             </div>
           </button>
           <button onClick={this.handleLogoClick}>

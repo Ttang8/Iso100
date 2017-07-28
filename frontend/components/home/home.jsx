@@ -21,7 +21,7 @@ class Home extends Component {
   }
 
   componentDidMount () {
-    setTimeout(() => this.setState({display: 'none'}), 1500);
+    setTimeout(() => this.setState({display: 'none'}), 4000);
     this.props.requestPhotos();
   }
 
@@ -66,7 +66,7 @@ class Home extends Component {
           <br />
           <Link to="/login">Get Started</Link>
         </div>
-        <img src="http://res.cloudinary.com/iso100app/image/upload/v1501178319/pexels-photo-326243_nj3zvm.jpg"></img>
+        <img src="https://res.cloudinary.com/iso100app/image/upload/v1501178319/pexels-photo-326243_nj3zvm.jpg"></img>
       </div>
     );
   }
