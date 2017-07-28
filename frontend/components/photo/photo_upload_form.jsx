@@ -14,7 +14,7 @@ class PhotoUploadForm extends Component {
       thumbnail_url: "",
 
     };
-    
+
     this.handleUpload = this.handleUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -37,7 +37,7 @@ class PhotoUploadForm extends Component {
       window.CLOUDINARY_OPTIONS, (errors, image) => {
         if (errors) {
         } else {
-          this.setState({image_url: image[0].url, thumbnail_url: image[0].thumbnail_url});
+          this.setState({image_url: image[0].secure_url});
         }
       }
     );
