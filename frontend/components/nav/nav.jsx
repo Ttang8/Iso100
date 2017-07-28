@@ -1,13 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import PhotoUploadFormContainer from '../photo/photo_upload_form_container';
+import Modal from 'react-modal';
 
 class Nav extends React.Component{
   constructor(props){
     super(props);
 
+    this.state = {
+      modalIsOpen: false
+    };
+
     this.handleLogout = this.handleLogout.bind(this);
     this.handleUsernameClick = this.handleUsernameClick.bind(this);
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   handleLogout(event){
@@ -38,6 +47,15 @@ class Nav extends React.Component{
     }
   }
 
+  openModal(){
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+    this.props.clearErrors();
+  }
+
   render(){
     if (this.props.currentUser) {
       let username = this.props.currentUser.username;
@@ -56,6 +74,15 @@ class Nav extends React.Component{
               <i className="fa fa-sign-out" aria-hidden="true"></i>&nbsp;
                 Logout</button>
             </div>
+            <Modal
+              isOpen={this.state.modalIsOpen}
+              onRequestClose={this.closeModal}
+              shouldCloseOnOverlayClick={false}
+              contentLabel="UploadFormModal"
+              className="session-modal"
+            >
+              <PhotoUploadFormContainer closeModal={this.closeModal}/>
+            </Modal>
         </div>
       );
     } else {

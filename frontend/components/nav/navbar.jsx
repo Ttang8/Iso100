@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import { ProtectedRoute } from '../../util/route_util';
 import NavContainer from './nav_container';
-import PhotoUploadFormContainer from '../photo/photo_upload_form_container';
-import Modal from 'react-modal';
 import { withRouter } from 'react-router';
 
 class NavBar extends Component {
@@ -12,15 +10,11 @@ class NavBar extends Component {
 
     this.state ={
       query: "",
-      modalIsOpen: false
     };
 
     // this.handleSubmit = this.handleSubmit.bind(this);
     // this.handleChange = this.handleChange.bind(this);
     this.handleLogoClick = this.handleLogoClick.bind(this);
-
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
   }
 
   // handleChange(event){
@@ -37,14 +31,7 @@ class NavBar extends Component {
   //   );
   // }
 
-  openModal(){
-    this.setState({modalIsOpen: true});
-  }
 
-  closeModal() {
-    this.setState({modalIsOpen: false});
-    this.props.clearErrors();
-  }
 
 
 
@@ -78,15 +65,7 @@ class NavBar extends Component {
           </button>
         </div>
         <NavContainer />
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          shouldCloseOnOverlayClick={false}
-          contentLabel="UploadFormModal"
-          className="session-modal"
-        >
-          <PhotoUploadFormContainer closeModal={this.closeModal}/>
-        </Modal>
+
       </header>
     );
   }
