@@ -44,13 +44,10 @@ class Home extends Component {
         </li>
       ));
       return (
-        <div className="main-page-photo-container-div">
-          <Masonry
-            className={'masonry-home-page'}
-            elementType={'ul'}
-            options={masonryOptions}>
+        <div className="index-photo-container">
+          <ul className="index-photos">
             {photoList}
-          </Masonry>
+          </ul>
         </div>
       );
     } else {

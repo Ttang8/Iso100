@@ -44,7 +44,9 @@ class SearchTagIndex extends Component {
       <Masonry
         className={'masonry-user-page'}
         elementType={'ul'}
-        options={masonryOptions}>
+        options={masonryOptions}
+        disableImagesLoaded={false}
+        updateOnEachImageLoad={false}>
       {photoList}
     </Masonry>
   );

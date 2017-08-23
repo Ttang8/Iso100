@@ -6,6 +6,17 @@
   border-radius: 5px;
 }
 
+.index-photos {
+  display: flex;
+  flex-wrap: wrap;
+  flex: auto;
+}
+
+.index-photo-container {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
 .masonry-home-page {
   margin: 0 auto;
 }
